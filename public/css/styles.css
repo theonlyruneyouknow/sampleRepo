@@ -4,3 +4,100 @@
 *:after {
   box-sizing: border-box;
 }
+
+body {
+  background-image: url("public/images/site/checkerboard.jpg");
+}
+
+hero {
+  background-image: url("public/images/vehicles/delorean.jpg");
+}
+
+.siteName a:link {
+  font-size: 40px;
+  text-indent: 50px;
+  text-align: justify;
+  text-decoration: none;
+  /* letter-spacing: 3px; */
+}
+
+#tools a:link {
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #e3e9e4;
+  /* text-align: right; */
+  position: absolute;
+  top: 8px;
+  right: 16px;
+  font-size: 18px;
+}
+
+ul.navigate {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+ul.navigate li {
+  float: left;
+}
+
+ul.navigate li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+ul.navigate li a:hover:not(.active) {
+  background-color: #111;
+}
+
+ul.navigate li a.active {
+  background-color: #04AA6D;
+}
+
+ul.navigate li.right {
+  float: right;
+}
+
+@media screen and (max-width: 600px) {
+
+  ul.navigate li.right,
+  ul.navigate li {
+    float: none;
+  }
+}
+
+/* 
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #e0b5b5;
+}
+
+li {
+  display: inline;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #e0b5b5;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover {
+  background-color: #111;
+} */
