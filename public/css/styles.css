@@ -5,13 +5,59 @@
   box-sizing: border-box;
 }
 
+/* html {
+  background-image: url("../images/site/checkerboard.jpg");
+} */
+
 body {
-  background-image: url("public/images/site/checkerboard.jpg");
+  width: 90%;
+  /* align-items:  */
+
+  margin: 5%;
+  background-color: white;
 }
+
+:root {
+  --color1: hsla(210, 97%, 66%, 0.884);
+  --color1b: hsla(210, 92%, 50%, 0.884);
+  --white: #ffffff;
+}
+
+/* @media screen and (max-width: 1040px) {
+  body {
+    background-image: url("../images/site/checkerboard.jpg");
+  }
+} */
 
 hero {
   background-image: url("public/images/vehicles/delorean.jpg");
+
 }
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+h2 {
+  color: black;
+}
+
+
+.boiler h2 {
+  color: var(--color1b);
+}
+
+.boiler button {
+  background-color: var(--color1);
+  color: black;
+  display: block;
+  padding: 10px 30px;
+
+}
+
 
 .siteName a:link {
   font-size: 40px;
@@ -24,12 +70,17 @@ hero {
 #tools a:link {
   text-transform: uppercase;
   text-decoration: none;
-  color: #e3e9e4;
+  color: #215714;
   /* text-align: right; */
   position: absolute;
-  top: 8px;
-  right: 16px;
+  top: 18px;
+  right: 26px;
   font-size: 18px;
+
+}
+
+#tools {
+  color: green;
 }
 
 ul.navigate {
@@ -57,11 +108,172 @@ ul.navigate li a:hover:not(.active) {
 }
 
 ul.navigate li a.active {
-  background-color: #04AA6D;
+  background-color: #010f0a;
 }
 
-ul.navigate li.right {
+mg_part ul.navigate li.right {
   float: right;
+}
+
+.hero h2,
+button {
+
+  color: var(--color1);
+}
+
+.hero span {
+  position: absolute;
+  top: 30%;
+  right: 60%;
+  background-color: rgb(255, 255, 255);
+  padding: 10px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color1);
+  opacity: 75%;
+}
+
+/* .block {
+  
+} */
+
+/* .card, */
+.card img {
+  display: inline-flex;
+  background-color: var(--color1);
+  border: 2px solid green;
+  padding: 10px;
+  margin: 10px;
+
+
+  width: 30%;
+}
+
+img.card {
+  background-color: var(--color1);
+}
+
+
+/* .flex-container1234 {
+  display: flex;
+} */
+
+.line1 {
+  flex: 50%;
+  /* display: inline-block; */
+  border: 12px solid var(--color1b);
+  outline: #4CAF50 solid 10px;
+  margin: auto;
+  padding: 20px;
+  /* text-align: center; */
+}
+
+.boiler {
+  display: block;
+  color: var(--color1);
+}
+
+.bold {
+  font-size: large;
+  list-style-type: none;
+}
+
+.boiler,
+
+.button {
+  font-size: 16px;
+  --color1: hsla(210, 97%, 66%, 0.884);
+}
+
+.Img_part {
+  width: 200px;
+  justify-content: center;
+}
+
+.Img_part img {
+  width: 150px;
+  height: 150px;
+  justify-content: center;
+  margin: auto;
+  display: block;
+
+}
+
+/* .upgrades, */
+.reviews {
+
+  display: inline-block;
+  color: black;
+  /* background-color: #111; */
+  /* display: block; */
+  /* color: white; */
+  text-align: left;
+  padding: 14px 16px;
+  text-decoration: none;
+  /* border: 1px solid green; */
+  padding: 50px;
+  margin: 20px;
+
+}
+
+div.boiler {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+  width: 20%;
+  font-size: 16px;
+}
+
+@media screen and (min-width: 540px) {
+  html {
+    background-image: url("../images/site/checkerboard.jpg");
+  }
+}
+
+/* .upgrades, */
+/* .container, */
+.card {
+  flex-wrap: wrap;
+  /* flex-basis: auto; */
+}
+
+.flex-container {
+  display: flex;
+  flex-direction: row;
+  font-size: 30px;
+  text-align: center;
+  flex-wrap: wrap-reverse;
+}
+
+.flex-item-left {
+  background-color: #f1f1f1;
+  padding: 10px;
+  flex: 50%;
+}
+
+.flex-item-right {
+  /* background-color: dodgerblue; */
+  padding: 10px;
+  /* flex: 50%; */
+}
+
+.bgr {
+  background-color: white;
+
+  padding: 25%;
+  padding: 10px;
+}
+
+.main1 {
+  display: inline-block;
+  background-color: var(--color1);
+  border: 2px solid green;
+
+  width: 400px;
+}
+
+.main {
+  text-align: left;
+
 }
 
 @media screen and (max-width: 600px) {
@@ -71,6 +283,15 @@ ul.navigate li.right {
     float: none;
   }
 }
+
+@media (max-width: 800px) {
+  .flex-container {
+    flex-wrap: wrap-reverse;
+    flex-direction: column;
+  }
+}
+
+/* div .boiler */
 
 /* 
 ul {
