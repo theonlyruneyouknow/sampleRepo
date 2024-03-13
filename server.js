@@ -12,6 +12,7 @@ const app = express()
 const static = require("./routes/static")
 const baseController = require("./controllers/baseController")
 
+
 /* ***********************
  * View Engine and Templates
  *************************/
@@ -24,10 +25,10 @@ app.set("layout", "./layouts/layout") // not at views root
  *************************/
 app.use(static)
 //Index route
-app.get("/", function (reg, res) {
-  res.render("index", { title: "home" })
-})
-// app.get("/", baseController.buildHome)
+// app.get("/", function (reg, res) {
+//   res.render("index", { title: "home" })
+// })
+app.get("/", baseController.buildHome)
 /* ***********************
  * Local Server Information
  * Values from .env (environment) file
