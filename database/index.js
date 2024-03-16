@@ -1,8 +1,5 @@
 const { Pool } = require("pg")
-const baseController = require("../controllers/baseController")
-// const baseController = app.get("/", baseController.buildHome)
 require("dotenv").config()
-
 /* ***************
  * Connection Pool
  * SSL Object needed for local testing of app
