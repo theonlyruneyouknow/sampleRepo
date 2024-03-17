@@ -22,11 +22,10 @@ Util.getNav = async function (req, res, next) {
         list += "</li>"
     })
     list += "</ul>"
-    console.log(data.row)
     return list
 }
 
-// module.exports = Util
+module.exports = Util
 
 
 /* **************************************
@@ -38,14 +37,13 @@ Util.buildClassificationGrid = async function (data) {
         grid = '<ul id="inv-display">'
         data.forEach(vehicle => {
             grid += '<li>'
-            grid += '<a href="../../inv/detail/' + vehicle.inv_id
+            grid += '<a href="../../inv/detail/' + vehicle.inv_id + 'test'
                 + '" title="View ' + vehicle.inv_make + ' ' + vehicle.inv_model
-                + ' details"><img src="' + vehicle.inv_thumbnail
+                + 'details"><img src="' + vehicle.inv_thumbnail
                 + '" alt="Image of ' + vehicle.inv_make + ' ' + vehicle.inv_model
                 + ' on CSE Motors" /></a>'
             grid += '<div class="namePrice">'
             grid += '<hr />'
-            // grid += '<p>TEST</p>'
             grid += '<h2>'
             grid += '<a href="../../inv/detail/' + vehicle.inv_id + '" title="View '
                 + vehicle.inv_make + ' ' + vehicle.inv_model + ' details">'
@@ -64,44 +62,41 @@ Util.buildClassificationGrid = async function (data) {
 }
 
 
+// inv_make,
+//     inv_model,
+//     inv_year,
+//     inv_description,
+//     inv_image,
+//     inv_thumbnail,
+//     inv_price,
+//     inv_miles,
+//     inv_color,
+//     classification_id
 
 /* **************************************
 * Build the classification view HTML
 * ************************************ */
-Util.buildinv_id = async function (data) {
+Util.buildVehicleGrid = async function (data) {
     let grid
     if (data.length > 0) {
         grid = '<ul id="inv-display">'
         data.forEach(vehicle => {
-
-            grid += '<li class="rune">'
+            grid += '<li>'
             grid += '<a href="../../inv/detail/' + vehicle.inv_id
                 + '" title="View ' + vehicle.inv_make + ' ' + vehicle.inv_model
-                + ' details"><img src="' + vehicle.inv_image
+                + 'details"><img src="' + vehicle.inv_thumbnail
                 + '" alt="Image of ' + vehicle.inv_make + ' ' + vehicle.inv_model
                 + ' on CSE Motors" /></a>'
             grid += '<div class="namePrice">'
             grid += '<hr />'
             grid += '<h2>'
             grid += '<a href="../../inv/detail/' + vehicle.inv_id + '" title="View '
-                + vehicle.inv_make + ' ' + vehicle.inv_model + ' details">'
+                + vehicle.inv_make + ' ' + vehicle.inv_model + ' 2details">'
                 + vehicle.inv_make + ' ' + vehicle.inv_model + '</a>'
             grid += '</h2>'
-            grid += '<span><strong>Price:</strong> $'
+            grid += '<span>$'
                 + new Intl.NumberFormat('en-US').format(vehicle.inv_price) + '</span>'
             grid += '</div>'
-            grid += '<div>'
-            // inv_model,
-            // inv_year,
-            grid += '<strong>Description:</strong> ' + vehicle.inv_description,
-                grid += '</div>'
-            grid += '<div>'
-            // inv_price,
-            grid += '<strong>Miles:</strong> ' + new Intl.NumberFormat('en-US').format(vehicle.inv_miles)
-            grid += '</div>'
-            grid += '<div>'
-            grid += '<strong>Exterior Color:</strong> ' + vehicle.inv_color,
-                grid += '</div>'
             grid += '</li>'
         })
         grid += '</ul>'
@@ -110,5 +105,3 @@ Util.buildinv_id = async function (data) {
     }
     return grid
 }
-
-module.exports = Util

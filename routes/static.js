@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
 
+// const detailRouter = express.detailRouter();
+
 // Static Routes
 // Set up "public" folder / subfolders for static files
 router.use(express.static("public"));

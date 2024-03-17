@@ -13,7 +13,7 @@ body {
   width: 90%;
   /* align-items:  */
 
-  margin: 5%;
+  margin: 50px;
   background-color: white;
 }
 
@@ -67,14 +67,17 @@ h2 {
   /* letter-spacing: 3px; */
 }
 
-#tools a:link {
+.tools a:link {
   text-transform: uppercase;
   text-decoration: none;
   color: #215714;
-  /* text-align: right; */
+  text-align: right;
+
   position: absolute;
-  top: 18px;
-  right: 26px;
+  /* margin: 5%; */
+  /* text-indent: -50px; */
+  top: 68px;
+  right: 100px;
   font-size: 18px;
 
 }
@@ -83,7 +86,8 @@ h2 {
   color: green;
 }
 
-ul.navigate {
+ul.navigate,
+.nav {
   list-style-type: none;
   margin: 0;
   padding: 0;
@@ -131,6 +135,10 @@ button {
   font-weight: 600;
   color: var(--color1);
   opacity: 75%;
+}
+
+#inv-display {
+  list-style-type: none;
 }
 
 /* .block {
