@@ -52,9 +52,9 @@ invCont.buildByinv_id = async function (req, res, next) {
     //     inv_color,
     //     classification_id
 
-
+    // " HELP Rune " +
     res.render("./inventory/vehicles", {
-        title: inv_year + " HELP Rune " + inv_make + " " + inv_model,
+        title: inv_year + inv_make + " " + inv_model,
         inv_make,
         // inv_model,
         // inv_year,
