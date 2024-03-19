@@ -5,6 +5,8 @@
 /* ***********************
  * Require Statements
  *************************/
+const session = require("express-session")
+const pool = require('./database/')
 const baseController = require("./controllers/baseController")
 const express = require("express")
 const expressLayouts = require("express-ejs-layouts")
@@ -12,10 +14,52 @@ const env = require("dotenv").config()
 const app = express()
 const static = require("./routes/static")
 
-const inventoryRoute = require("./routes/inventoryRoute")
+const accountRoute = require("./routes/accountRoute")
+const Util = require("./utilities/index")
 const Util = require("./utilities/index")
 // console.log("check vari", Util)
 // console.log("check var", Util)
+
+
+/* ****************************************
+*  Deliver login view
+* *************************************** */
+async function buildLogin(req, res, next) {
+  let nav = await utilities.getNav()
+  res.render("account/login", {
+    title: "Login",
+    nav,
+  })
+}
+
+module.exports = { buildLogin }
+
+
+
+
+/* ***********************
+ * Middleware
+ * ************************/
+app.use(session({
+  store: new (require('connect-pg-simple')(session))({
+    createTableIfMissing: true,
+    pool,
+  }),
+  secret: process.env.SESSION_SECRET,
+  resave: true,
+  saveUninitialized: true,
+  name: 'sessionId',
+}))
+
+// Express Messages Middleware
+app.use(require('connect-flash')())
+app.use(function (req, res, next) {
+  res.locals.messages = require('express-messages')(req, res)
+  next()
+})
+
+
+
 /* ***********************
  * View Engine and Templates
  *************************/
