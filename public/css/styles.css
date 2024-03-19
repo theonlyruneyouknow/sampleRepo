@@ -137,8 +137,29 @@ button {
   opacity: 75%;
 }
 
-#inv-display {
+.col-container {
   list-style-type: none;
+
+  display: table;
+  width: 100%;
+}
+
+.col {
+  display: table-cell;
+  padding: 16px;
+}
+
+
+
+#inv-display {
+
+  list-style-type: none;
+  -moz-column-count: 3;
+  -moz-column-gap: 20px;
+  -webkit-column-count: 3;
+  -webkit-column-gap: 20px;
+  column-count: 3;
+  column-gap: 20px;
 }
 
 /* .block {

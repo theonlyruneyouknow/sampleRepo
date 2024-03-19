@@ -37,7 +37,7 @@ Util.buildClassificationGrid = async function (data) {
     if (data.length > 0) {
         grid = '<ul id="inv-display">'
         data.forEach(vehicle => {
-            grid += '<li>'
+            grid += '<li id="inv-display">'
             grid += '<a href="../../inv/detail/' + vehicle.inv_id
                 + '" title="View ' + vehicle.inv_make + ' ' + vehicle.inv_model
                 + ' details"><img src="' + vehicle.inv_thumbnail
@@ -71,9 +71,9 @@ Util.buildClassificationGrid = async function (data) {
 Util.buildinv_id = async function (data) {
     let grid
     if (data.length > 0) {
-        grid = '<ul id="inv-display">'
+        grid = '<div class="col-container">'
         data.forEach(vehicle => {
-
+            grid += '<div class="col">'
             grid += '<li class="rune">'
             grid += '<a href="../../inv/detail/' + vehicle.inv_id
                 + '" title="View ' + vehicle.inv_make + ' ' + vehicle.inv_model
@@ -103,8 +103,11 @@ Util.buildinv_id = async function (data) {
             grid += '<strong>Exterior Color:</strong> ' + vehicle.inv_color,
                 grid += '</div>'
             grid += '</li>'
+            grid += '</div>'
+
+            grid += '</div>'
         })
-        grid += '</ul>'
+        grid += '</div>'
     } else {
         grid += '<p class="notice">Sorry, no matching vehicles could be found.</p>'
     }
