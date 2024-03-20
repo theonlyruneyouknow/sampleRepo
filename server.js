@@ -13,7 +13,7 @@ const expressLayouts = require("express-ejs-layouts")
 const env = require("dotenv").config()
 const app = express()
 const static = require("./routes/static")
-
+const inventoryRoute = require("./routes/inventoryRoute")
 const accountRoute = require("./routes/accountRoute")
 const Util = require("./utilities/index")
 // const Util = require("./utilities/index")
@@ -57,7 +57,6 @@ app.use(function (req, res, next) {
   res.locals.messages = require('express-messages')(req, res)
   next()
 })
-app.use("/account", require("./routes/accountRoute"))
 
 
 
@@ -71,16 +70,18 @@ app.set("layout", "./layouts/layout") // not at views root
 /* ***********************
  * Routes
  *************************/
-app.use(static)
-app.get("/", baseController.buildHome)
-
+app.use(require("./routes/static))
+app.get("/", utilities.handleErrors(baseController.buildHome))
+// Inventory routes
+app.use("/inv", require("./routes/inventoryRoute))
+app.use("/account", require("./routes/accountRoute"))
 //Index route
 // app.get("/", function (reg, res) {
 //   res.render("index", { title: "home" })
 // })
 
-// Inventory routes
-app.use("/inv", inventoryRoute)
+
+
 
 // File Not Found Route - must be last route in list
 app.use(async (req, res, next) => {
