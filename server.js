@@ -16,7 +16,7 @@ const static = require("./routes/static")
 
 const accountRoute = require("./routes/accountRoute")
 const Util = require("./utilities/index")
-const Util = require("./utilities/index")
+// const Util = require("./utilities/index")
 // console.log("check vari", Util)
 // console.log("check var", Util)
 
@@ -57,6 +57,7 @@ app.use(function (req, res, next) {
   res.locals.messages = require('express-messages')(req, res)
   next()
 })
+app.use("/account", require("./routes/accountRoute"))
 
 
 
