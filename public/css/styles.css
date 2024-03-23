@@ -149,7 +149,11 @@ button {
   padding: 16px;
 }
 
-
+/* 
+input:required:invalid,
+input:focus:invalid { */
+/* insert your own styles for invalid form input */
+/* } */
 
 #inv-display {
 
