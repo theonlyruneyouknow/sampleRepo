@@ -32,6 +32,15 @@ async function buildRegister(req, res, next) {
     })
 }
 
+async function buildManagement(req, res, next) {
+    let nav = await utilities.getNav()
+    res.render("inv/management", {
+        title: "Management",
+        nav,
+        errors: null,
+    })
+}
+
 /* ****************************************
 *  Process Registration
 * *************************************** */

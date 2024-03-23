@@ -66,6 +66,23 @@ invCont.buildByinv_id = async function (req, res, next) {
         grid,
     })
 }
+
+// res.render("./inv", {
+//     title: "Management",
+//     // inv_make,
+//     // inv_model,
+//     // inv_year,
+//     // inv_description,
+//     // inv_price,
+//     // inv_miles,
+//     // inv_color,
+//     nav,
+//     grid,
+// })
+
+
+
+
 module.exports = invCont
 // module.exports = invCont2
 

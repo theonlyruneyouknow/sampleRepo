@@ -90,9 +90,17 @@ async function buildRegister(req, res, next) {
     nav,
   })
 }
+
+async function buildManagement(req, res, next) {
+  let nav = await utilities.getNav()
+  res.render("account/register", {
+    title: "Sign Up",
+    nav,
+  })
+}
 // module.exports = { buildLogin, buildSignup }
 
-module.exports = { buildLogin, buildRegister }
+module.exports = { buildLogin, buildRegister, buildManagement }
 
 
 
@@ -115,8 +123,9 @@ app.use("/signup", require("./routes/accountRoute"))
 //   res.render("index", { title: "home" })
 // })
 // Inventory routes
-app.use("/inv", inventoryRoute)
+app.use("/inv", inventoryRoute) //original but shows 404
 
+// app.use("/inv", /inventory/management)
 
 
 // File Not Found Route - must be last route in list

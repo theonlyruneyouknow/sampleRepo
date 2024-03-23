@@ -12,6 +12,8 @@ router.get("/login", utilities.handleErrors(accountController.buildLogin))
 // router.get("/signup", utilities.handleErrors(accountController.buildRegister))
 router.get("/register", utilities.handleErrors(accountController.buildRegister))
 
+router.get("/inventory/management", utilities.handleErrors(accountController.buildManagement))
+
 // const detailRouter = new express.detailRouter()
 // const invController = require("../controllers/invController")
 // router.post('/register', utilities.handleErrors(accountController.registerAccount))
