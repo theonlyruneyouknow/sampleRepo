@@ -34,8 +34,26 @@ async function buildRegister(req, res, next) {
 
 async function buildManagement(req, res, next) {
     let nav = await utilities.getNav()
-    res.render("inv/management", {
+    res.render("account/management", {
         title: "Management",
+        nav,
+        errors: null,
+    })
+}
+
+async function buildClassification(req, res, next) {
+    let nav = await utilities.getNav()
+    res.render("account/add_classification", {
+        title: "Add Classification",
+        nav,
+        errors: null,
+    })
+}
+
+async function buildInventory(req, res, next) {
+    let nav = await utilities.getNav()
+    res.render("account/add_inventory", {
+        title: "Add Inventory",
         nav,
         errors: null,
     })
@@ -75,8 +93,79 @@ async function registerAccount(req, res) {
 }
 
 
+/* ****************************************
+*  Process Add Classification
+* *************************************** */
+async function registerClassification(req, res) {
+    let nav = await utilities.getNav()
+    const { classification_name } = req.body
+
+    const regResult = await accountModel.registerClassification(
+        classification_name
+    )
+
+    if (regResult) {
+        req.flash(
+            "notice",
+            `Congratulations, you\'re registered ${classification_name}. Add another Classification?`
+        )
+        res.status(201).render("account/add_classification", {
+            title: "Login",
+            nav,
+        })
+    } else {
+        req.flash("notice", "Sorry, the registration failed.")
+        res.status(501).render("account/add_classification", {
+            title: "Registration",
+            nav,
+            // errors: null,
+        })
+    }
+}
+
+
+/* ****************************************
+*  Process Add Vehicle
+* *************************************** */
+async function registerVehicle(req, res) {
+    let nav = await utilities.getNav()
+    const { inv_make, inv_model, inv_year, inv_description, inv_image, inv_thumbnail, inv_price, inv_miles, inv_color, classification_id } = req.body
+
+    const regResult = await accountModel.registerVehicle(
+        inv_make,
+        inv_model,
+        inv_year,
+        inv_description,
+        inv_image,
+        inv_thumbnail,
+        inv_price,
+        inv_miles,
+        inv_color,
+        classification_id
+    )
+
+    if (regResult) {
+        req.flash(
+            "notice",
+            `Congratulations, you\'re registered ${inv_year + " " + inv_make + " " + inv_model}. Register another Vehicle?.`
+        )
+        res.status(201).render("account/add_inventory", {
+            title: "Login",
+            nav,
+        })
+    } else {
+        req.flash("notice", "Sorry, the registration failed.")
+        res.status(501).render("account/add_inventory", {
+            title: "Registration",
+            nav,
+            // errors: null,
+        })
+    }
+}
+
+
 
 
 
 //   module.exports = { buildLogin, buildSignup }
-module.exports = { buildLogin, buildRegister, registerAccount }
+module.exports = { buildLogin, buildRegister, registerAccount, registerClassification, registerVehicle, buildManagement, buildInventory, buildClassification }

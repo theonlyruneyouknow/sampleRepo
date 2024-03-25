@@ -1,0 +1,51 @@
+<h1>Add Inventory</h1>
+<%- messages() %>
+
+    <% if (errors) { %>
+        <ul class="notice">
+            <% errors.array().forEach(error=> { %>
+                <li>
+                    <%= error.msg %>
+                </li>
+                <% }) %>
+        </ul>
+        <% } %>
+
+            <span>
+
+                <!-- <h2>HTML Forms</h2> -->
+
+                <form action="/account/add_inventory" method="post">
+                    <label for="classification">Classification:</label><br>
+                    <input type="text" id="account_classification" name="account_Classification" required value=""><br>
+
+                    <label for="name">Make:</label><br>
+                    <input type="text" id="account_make" name="account_make" required value=""><br>
+                    <label for="name">Model:</label><br>
+                    <input type="text" id="account_model" name="account_model" required value=""><br>
+                    <label for="name">Description:</label><br>
+                    <input type="text" id="account_description" name="account_description" required value=""><br>
+                    <label for="name">Image Path:</label><br>
+                    <input type="text" id="account_imagepath" name="account_imagepath" required value=""><br>
+                    <label for="name">Thumbnail Path:</label><br>
+                    <input type="text" id="account_thumbnailpath" name="account_thumbnailpath" required value=""><br>
+                    <label for="name">Price:</label><br>
+                    <input type="text" id="account_price" name="account_price" required value=""><br>
+                    <label for="text">Year:</label><br>
+                    <input type="text" id="account_year" name="account_year" required
+                        placeholder="Enter a valid email address" value=""><br>
+                    <label for="name">Miles:</label><br>
+                    <input type="text" id="account_miles" name="account_miles" required value=""><br>
+                    <label for="name">Color:</label><br>
+                    <input type="text" id="account_color" name="account_color" required value=""><br>
+
+
+                    <br>
+
+                    <button class="button">Add Vehicle</button>
+                    <!-- <input type="submit" value="Submit"> -->
+                </form>
+                <!-- <div>No Account? No Problem: <a href="/account/register">Sign Up</a></div> -->
+
+            </span>
+            </picture>

@@ -67,12 +67,15 @@ h2 {
   /* letter-spacing: 3px; */
 }
 
+.management a:link,
 .tools a:link {
   text-transform: uppercase;
   text-decoration: none;
   color: #215714;
   text-align: right;
+}
 
+.tools a:link {
   position: absolute;
   /* margin: 5%; */
   /* text-indent: -50px; */
@@ -81,6 +84,17 @@ h2 {
   font-size: 18px;
 
 }
+
+.management a:link {
+  position: absolute;
+  /* margin: 5%; */
+  /* text-indent: -50px; */
+  top: 68px;
+  right: 250px;
+  font-size: 18px;
+
+}
+
 
 #tools {
   color: green;

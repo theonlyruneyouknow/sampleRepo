@@ -12,8 +12,11 @@ router.get("/login", utilities.handleErrors(accountController.buildLogin))
 // router.get("/signup", utilities.handleErrors(accountController.buildRegister))
 router.get("/register", utilities.handleErrors(accountController.buildRegister))
 
-router.get("/inventory/management", utilities.handleErrors(accountController.buildManagement))
+router.get("/management", utilities.handleErrors(accountController.buildManagement))
+router.get("/add_classification", utilities.handleErrors(accountController.buildClassification))
+router.get("/add_inventory", utilities.handleErrors(accountController.buildInventory))
 
+router.get("/inv", utilities.handleErrors(accountController.buildHome))
 // const detailRouter = new express.detailRouter()
 // const invController = require("../controllers/invController")
 // router.post('/register', utilities.handleErrors(accountController.registerAccount))
@@ -24,6 +27,24 @@ router.post(
     regValidate.checkRegData,
     utilities.handleErrors(accountController.registerAccount)
 )
+
+
+// router.post(
+//     "/add_classification",
+//     regValidate.classificationRules(),
+//     regValidate.checkClassificationData,
+//     utilities.handleErrors(accountController.registerClassification)
+// )
+
+
+// router.post(
+//     "/add_inventory",
+//     regValidate.inventoryRules(),
+//     regValidate.checkInventoryData,
+//     utilities.handleErrors(accountController.registerVehicle)
+// )
+
+
 // Route to build inventory by classification view
 // router.get("/type/:classificationId", invController.buildByClassificationId);
 

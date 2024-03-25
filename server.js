@@ -93,14 +93,33 @@ async function buildRegister(req, res, next) {
 
 async function buildManagement(req, res, next) {
   let nav = await utilities.getNav()
-  res.render("account/register", {
-    title: "Sign Up",
+  res.render("account/management", {
+    title: "Management",
     nav,
   })
 }
+
+async function buildClassification(req, res, next) {
+  let nav = await utilities.getNav()
+  res.render("account/add_classification", {
+    title: "Add Classification",
+    nav,
+    errors: null,
+  })
+}
+
+async function buildInventory(req, res, next) {
+  let nav = await utilities.getNav()
+  res.render("account/add_inventory", {
+    title: "Add Inventory",
+    nav,
+    errors: null,
+  })
+}
+
 // module.exports = { buildLogin, buildSignup }
 
-module.exports = { buildLogin, buildRegister, buildManagement }
+module.exports = { buildLogin, buildRegister, buildManagement, buildInventory, buildClassification }
 
 
 
@@ -111,11 +130,17 @@ module.exports = { buildLogin, buildRegister, buildManagement }
  *************************/
 app.use(require("./routes/static"))
 app.get("/", utilities.handleErrors(baseController.buildHome))
+
+// app.get("/inv", utilities.handleErrors(baseController.buildManagement))
 // Inventory routes
-app.use("/inv", require("./routes/inventoryRoute"))
+// app.use("/inv", require("./routes/inventoryRoute"))
+
+
+// app.use("/inv", require("./routes/accountRoute"))
 app.use("/account", require("./routes/accountRoute"))
 
 app.use("/login", require("./routes/accountRoute"))
+app.use("/management", require("./routes/accountRoute"))
 app.use("/signup", require("./routes/accountRoute"))
 //Index route
 
@@ -125,7 +150,7 @@ app.use("/signup", require("./routes/accountRoute"))
 // Inventory routes
 app.use("/inv", inventoryRoute) //original but shows 404
 
-// app.use("/inv", /inventory/management)
+// app.get("/inv", /inventory/management)
 
 
 // File Not Found Route - must be last route in list

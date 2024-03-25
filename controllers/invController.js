@@ -66,20 +66,35 @@ invCont.buildByinv_id = async function (req, res, next) {
         grid,
     })
 }
+// /* ***************************
+//  *  Build inventory by classification view
+//  * ************************** */
+// invCont.buildManagement = async function (req, res, next) {
+//     const inv_id = req.params.inv_id
+//     const data = await invModel.getInventoryByinv_id(inv_id)
+//     const grid = await utilities.buildinv_id(data)
+//     let nav = await utilities.getNav()
+//     const inv_year = data[0].inv_year
+//     const inv_make = data[0].inv_make
+//     const inv_model = data[0].inv_model
+//     const inv_description = data[0].inv_description
+//     const inv_miles = data[0].inv_miles
+//     const inv_color = data[0].inv_color
+//     const inv_price = data[0].inv_price
 
-// res.render("./inv", {
-//     title: "Management",
-//     // inv_make,
-//     // inv_model,
-//     // inv_year,
-//     // inv_description,
-//     // inv_price,
-//     // inv_miles,
-//     // inv_color,
-//     nav,
-//     grid,
-// })
-
+//     res.render("./inv", {
+//         title: "Management",
+//         // inv_make,
+//         // inv_model,
+//         // inv_year,
+//         // inv_description,
+//         // inv_price,
+//         // inv_miles,
+//         // inv_color,
+//         nav,
+//         grid,
+//     })
+// }
 
 
 
