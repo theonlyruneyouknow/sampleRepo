@@ -142,6 +142,7 @@ app.use("/account", require("./routes/accountRoute"))
 app.use("/login", require("./routes/accountRoute"))
 app.use("/management", require("./routes/accountRoute"))
 app.use("/signup", require("./routes/accountRoute"))
+
 //Index route
 
 // app.get("/", function (reg, res) {

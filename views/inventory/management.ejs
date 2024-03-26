@@ -1,22 +1,23 @@
-<% if (title) { %>
-    <h1>
-        <%= title %>
-    </h1>
-    <h2>Management</h2>
+<h1>Please log in</h1>
+<%#- messages() %>
+
+    <span>
+
+        <h2>HTML Forms</h2>
 
 
-    <!-- <#% } else { res.redirect('/') } %>
 
-        <%# messages() %>
-            <#%- messages() %>
+        <form action="/action_page.php">
+            <!-- <label for="name">Email address:</label><br>
+            <input type="text" id="account_email" name="account_email" value=""><br>
+            <label for="email">Password:</label><br>
+            <input type="text" id="account_password" name="account_password" value=""><br><br>
+            <button class="button">Log In</button> -->
+            <!-- <input type="submit" value="Submit"> -->
+        </form>
+        <div><a href="/inv/add_classification">Add New Classification</a>
+            <a href="/inv/add_inventory">Add New Vehicle</a>
+        </div>
 
-                <#% if (errors) { %>
-                    <ul class="notice">
-                        <#% errors.array().forEach(error=> { %>
-                            <li>
-                                <%#= error.msg %>
-                            </li>
-                            <#% }) %>
-                    </ul>
-                    <#% } %>
-                        <%#- grid %> -->
+    </span>
+    </picture>

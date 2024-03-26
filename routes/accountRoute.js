@@ -13,28 +13,13 @@ router.get("/login", utilities.handleErrors(accountController.buildLogin))
 router.get("/register", utilities.handleErrors(accountController.buildRegister))
 
 router.get("/management", utilities.handleErrors(accountController.buildManagement))
-router.get("/add_classification", utilities.handleErrors(accountController.buildClassification))
-router.get("/add_inventory", utilities.handleErrors(accountController.buildInventory))
 
 router.get("/inv", utilities.handleErrors(accountController.buildHome))
 // const detailRouter = new express.detailRouter()
 // const invController = require("../controllers/invController")
 // router.post('/register', utilities.handleErrors(accountController.registerAccount))
 // Process the registration data
-router.post(
-    "/register",
-    regValidate.registationRules(),
-    regValidate.checkRegData,
-    utilities.handleErrors(accountController.registerAccount)
-)
 
-
-// router.post(
-//     "/add_classification",
-//     regValidate.classificationRules(),
-//     regValidate.checkClassificationData,
-//     utilities.handleErrors(accountController.registerClassification)
-// )
 
 
 // router.post(
