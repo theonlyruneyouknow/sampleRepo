@@ -101,7 +101,7 @@ async function buildManagement(req, res, next) {
 
 async function buildClassification(req, res, next) {
   let nav = await utilities.getNav()
-  res.render("account/add_classification", {
+  res.render("inventory/add_classification", {
     title: "Add Classification",
     nav,
     errors: null,
@@ -110,7 +110,7 @@ async function buildClassification(req, res, next) {
 
 async function buildInventory(req, res, next) {
   let nav = await utilities.getNav()
-  res.render("account/add_inventory", {
+  res.render("inventory/add_inventory", {
     title: "Add Inventory",
     nav,
     errors: null,

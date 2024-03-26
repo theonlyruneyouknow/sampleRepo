@@ -14,18 +14,6 @@ async function registerAccount(account_firstname, account_lastname, account_emai
 
 
 
-/* *****************************
-*   Register new account
-* *************************** */
-async function registerClassification(classification_name) {
-    try {
-        const sql = "INSERT INTO classification (classification_name) VALUES ($1) RETURNING *"
-        return await pool.query(sql, [classification_name])
-    } catch (error) {
-        return error.message
-    }
-}
-
 
 /* *****************************
 *   Register new account
@@ -39,4 +27,4 @@ async function registerVehicle(inv_make, inv_model, inv_year, inv_description, i
     }
 }
 
-module.exports = { registerAccount, registerClassification, registerVehicle }
+module.exports = { registerAccount, registerVehicle }

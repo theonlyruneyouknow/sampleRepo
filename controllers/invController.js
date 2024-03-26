@@ -14,7 +14,7 @@ invCont.buildByClassificationId = async function (req, res, next) {
     const grid = await utilities.buildClassificationGrid(data)
     let nav = await utilities.getNav()
     const className = data[0].classification_name
-    res.render("./inventory/classification", {
+    res.render("inventory/classification", {
         title: className + " vehicles",
         nav,
         grid,
@@ -134,13 +134,13 @@ invCont.registerClassification = async function (req, res, next) {
             "notice",
             `Congratulations, you\'re registered ${classification_name}. Add another Classification?`
         )
-        res.status(201).render("account/add_classification", {
+        res.status(201).render("inventory/add_classification", {
             title: "Login",
             nav,
         })
     } else {
         req.flash("notice", "Sorry, the registration failed.")
-        res.status(501).render("account/add_classification", {
+        res.status(501).render("inventory/add_classification", {
             title: "Registration",
             nav,
             // errors: null,
@@ -176,13 +176,13 @@ invCont.registerVehicle = async function (req, res, next) {
             "notice",
             `Congratulations, you\'re registered ${inv_year + " " + inv_make + " " + inv_model}. Register another Vehicle?.`
         )
-        res.status(201).render("account/add_inventory", {
+        res.status(201).render("inv/add_inventory", {
             title: "Login",
             nav,
         })
     } else {
         req.flash("notice", "Sorry, the registration failed.")
-        res.status(501).render("account/add_inventory", {
+        res.status(501).render("inv/add_inventory", {
             title: "Registration",
             nav,
             // errors: null,

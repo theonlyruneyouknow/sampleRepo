@@ -6,7 +6,7 @@ const validate = {}
 /*  **********************************
   *  Registration Data Validation Rules for classification
   * ********************************* */
-validate.classificationRules = () => {
+validate.classificationRules = async (req, res, next) => {
     return [
         // firstname is required and must be string
         body("classification_name")
@@ -47,7 +47,7 @@ validate.checkClassificationData = async (req, res, next) => {
   *  Registration Data Validation Rules
   * ********************************* */
 
-validate.inventoryRules = () => {
+validate.inventoryRules = async (req, res, next) => {
     return [
         // firstname is required and must be string
         body("inv_make")
@@ -171,6 +171,8 @@ validate.checkInventoryData = async (req, res, next) => {
     }
     next()
 }
+
+
 
 module.exports = validate
 
