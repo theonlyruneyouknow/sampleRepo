@@ -5,10 +5,13 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "type": "chrome",
+            "name": "Launch Program",
+            "program": "${workspaceFolder}/server.js",
             "request": "launch",
-            "name": "Open classification.ejs",
-            "file": "c:\\git\\cse340\\sampleRepo\\views\\layouts\\inventory\\classification.ejs"
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "type": "node"
         }
     ]
 }

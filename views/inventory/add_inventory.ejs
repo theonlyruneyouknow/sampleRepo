@@ -1,43 +1,43 @@
 <h1>Add Inventory</h1>
-<%- messages() %>
+<%#- messages() %>
 
-    <% if (errors) { %>
+    <%# if (errors) { %>
         <ul class="notice">
-            <% errors.array().forEach(error=> { %>
+            <%# errors.array().forEach(error=> { %>
                 <li>
-                    <%= error.msg %>
+                    <%#= error.msg %>
                 </li>
-                <% }) %>
+                <%# }) %>
         </ul>
-        <% } %>
+        <%# } %>
 
             <span>
 
                 <!-- <h2>HTML Forms</h2> -->
 
-                <form action="/inv/add_inventory" method="post">
+                <form action="add_inventory" method="post">
                     <label for="classification">Classification:</label><br>
-                    <input type="text" id="account_classification" name="account_Classification" required value=""><br>
+                    <input type="text" id="classification_id" name="classification_id" required value=""><br>
 
                     <label for="name">Make:</label><br>
-                    <input type="text" id="account_make" name="account_make" required value=""><br>
+                    <input type="text" id="inv_make" name="inv_make" required value=""><br>
                     <label for="name">Model:</label><br>
-                    <input type="text" id="account_model" name="account_model" required value=""><br>
+                    <input type="text" id="inv_model" name="inv_model" required value=""><br>
                     <label for="name">Description:</label><br>
-                    <input type="text" id="account_description" name="account_description" required value=""><br>
+                    <input type="text" id="inv_description" name="inv_description" required value=""><br>
                     <label for="name">Image Path:</label><br>
-                    <input type="text" id="account_imagepath" name="account_imagepath" required value=""><br>
+                    <input type="text" id="inv_image" name="inv_image" required value=""><br>
                     <label for="name">Thumbnail Path:</label><br>
-                    <input type="text" id="account_thumbnailpath" name="account_thumbnailpath" required value=""><br>
+                    <input type="text" id="inv_thumbnail" name="inv_thumbnail" required value=""><br>
                     <label for="name">Price:</label><br>
-                    <input type="text" id="account_price" name="account_price" required value=""><br>
+                    <input type="text" id="inv_price" name="inv_price" required value=""><br>
                     <label for="text">Year:</label><br>
-                    <input type="text" id="account_year" name="account_year" required
-                        placeholder="Enter a valid email address" value=""><br>
+                    <input type="text" id="inv_year" name="inv_year" required placeholder="Enter a valid email address"
+                        value=""><br>
                     <label for="name">Miles:</label><br>
-                    <input type="text" id="account_miles" name="account_miles" required value=""><br>
+                    <input type="text" id="inv_miles" name="inv_miles" required value=""><br>
                     <label for="name">Color:</label><br>
-                    <input type="text" id="account_color" name="account_color" required value=""><br>
+                    <input type="text" id="inv_color" name="inv_color" required value=""><br>
 
 
                     <br>

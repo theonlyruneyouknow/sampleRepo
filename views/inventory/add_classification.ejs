@@ -1,6 +1,7 @@
 <h1>Add Classification</h1>
 <%- messages() %>
 
+    <!-- // here goes the error messages -->
     <% if (errors) { %>
         <ul class="notice">
             <% errors.array().forEach(error=> { %>
@@ -11,11 +12,12 @@
         </ul>
         <% } %>
 
+
             <span>
 
                 <!-- <h2>HTML Forms</h2> -->
 
-                <form action="/inv/add_classification" method="post">
+                <form action="add_classification" method="post">
                     <label for="name">Classification Name:</label><br>
                     <input type="text" id="classification_name" name="classification_name" required value=""><br>
 

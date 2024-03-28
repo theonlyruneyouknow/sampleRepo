@@ -1,6 +1,8 @@
 const invModel = require("../models/inventory-model")
 const utilities = require("../utilities/")
 
+const express = require("express")
+const router = new express.Router()
 const invCont = {}
 
 // const invCont2 = {}
@@ -137,6 +139,7 @@ invCont.registerClassification = async function (req, res, next) {
         res.status(201).render("inventory/add_classification", {
             title: "Login",
             nav,
+            errors: null,
         })
     } else {
         req.flash("notice", "Sorry, the registration failed.")
@@ -176,16 +179,16 @@ invCont.registerVehicle = async function (req, res, next) {
             "notice",
             `Congratulations, you\'re registered ${inv_year + " " + inv_make + " " + inv_model}. Register another Vehicle?.`
         )
-        res.status(201).render("inv/add_inventory", {
+        res.status(201).render("inventory/add_inventory", {
             title: "Login",
             nav,
         })
     } else {
         req.flash("notice", "Sorry, the registration failed.")
-        res.status(501).render("inv/add_inventory", {
+        res.status(501).render("inventory/add_inventory", {
             title: "Registration",
             nav,
-            // errors: null,
+            errors: null,
         })
     }
 }
