@@ -1,11 +1,29 @@
 const invModel = require("../models/inventory-model")
 const utilities = require("../utilities/")
-
+// const buildClassificationList = require("../utilities/buildClassificationList")
 const express = require("express")
 const router = new express.Router()
 const invCont = {}
 
 // const invCont2 = {}
+
+
+
+invCont.buildInventory = async function (req, res, next) {
+    let nav = await utilities.getNav()
+    const buildClassificationList = await utilities.buildClassificationList()
+    const add_classification_name = "Add new inventory"
+    res.render("./inventory/add_vehicle", {
+        title: add_classification_name,
+        nav,
+        classificationList
+    })
+}
+
+
+
+
+
 
 /* ***************************
  *  Build inventory by classification view
