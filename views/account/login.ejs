@@ -1,20 +1,45 @@
 <h1>Please log in</h1>
-<%#- messages() %>
+<% if (title) { %>
+    <h1>
+        <%= title %>
+    </h1>
+    <% } else { res.redirect('/') } %>
+        <%- messages() %>
 
-    <span>
+            <span>
 
-        <h2>HTML Forms</h2>
+                <!-- <h2>HTML Forms</h2> -->
+                <div id="loginContainer"></div>
+                <form id="loginForm" action="/account/login" method="post">
+                    <label for="email">Email address:</label><br>
+                    <input type="email" id="account_email" name="account_email" value=""><br><br>
+                    <label for="password">Password:</label><br>
+                    <input type="password" id="account_password" name="account_password" value=""><br><br>
+                    <!-- <label for="password">Password:</label>
+                <input type="password" name="pword" id="pword"> -->
+                    <span id="pswdBtn">Show Password</span><br><br>
+                    <button class="button">Log In</button>
+                    <!-- <input type="submit" value="Submit"> -->
+                </form>
+                <!-- <div> -->
+                No Account? No Problem: <a href="/account/register">Sign Up</a>
+                <!-- <a href="/account/management">Manage</a> -->
+                </div>
 
-        <form action="/action_page.php">
-            <label for="name">Email address:</label><br>
-            <input type="text" id="account_email" name="account_email" value=""><br>
-            <label for="email">Password:</label><br>
-            <input type="text" id="account_password" name="account_password" value=""><br><br>
-            <button class="button">Log In</button>
-            <!-- <input type="submit" value="Submit"> -->
-        </form>
-        <div>No Account? No Problem: <a href="/account/register">Sign Up</a><a href="/account/management">Manage</a>
-        </div>
-
-    </span>
-    </picture>
+            </span>
+            </picture>
+            <!-- <script src="./Script.js"> -->
+            <script>
+                const pswdBtn = document.querySelector("#pswdBtn");
+                pswdBtn.addEventListener("click", function () {
+                    const pswdInput = document.getElementById("account_password");
+                    const type = pswdInput.getAttribute("type");
+                    if (type == "password") {
+                        pswdInput.setAttribute("type", "text");
+                        pswdBtn.innerHTML = "Hide Password";
+                    } else {
+                        pswdInput.setAttribute("type", "password");
+                        pswdBtn.innerHTML = "Show Password";
+                    }
+                });
+            </script>

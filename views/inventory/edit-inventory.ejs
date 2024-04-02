@@ -16,7 +16,7 @@
                 <!-- <h2>HTML Forms</h2> -->
 
 
-                <form action="add_inventory" method="post">
+                <form action="edit-inventory" method="post" id="update-form">
                     <label for="classification">Classification:</label><br>
                     <%- classificationList %>
                         <input type="hidden" id="classification_id" name="classification_id" required value="">
@@ -47,7 +47,7 @@
 
                         <br>
 
-                        <button class="button">Add Vehicle</button>
+                        <button class="button" id="disabled">Edit Vehicle</button>
                         <!-- <input type="submit" value="Submit"> -->
                 </form>
                 <!-- <div>No Account? No Problem: <a href="/account/register">Sign Up</a></div> -->

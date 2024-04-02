@@ -8,6 +8,14 @@ const regValidate = require('../utilities/inventory-validation')
 
 const invController = require("../controllers/invController")
 
+const inventoryValidate = require("../utilities/inventory-validation");
+
+// router.use([
+//     "/add-classification",
+//     "/add-inventory",
+//     "/update",
+//     "/delete"],
+//     utilities.restrictAccess);
 
 // const router = new express.Router()
 // const detailRouter = new express.Router()
@@ -17,21 +25,27 @@ const invController = require("../controllers/invController")
 // const invChecks = require("../utilities/inventory-valuation")
 // Route to build inventory by classification view
 
-router.get("/add_classification", utilities.handleErrors(invController.buildClassification))
-router.get("/add_inventory", utilities.handleErrors(invController.buildInventory))
+router.get("/add_classification",
+    utilities.handleErrors(invController.buildClassification))
+router.get("/add_inventory",
+    utilities.handleErrors(invController.buildInventory))
 
 
-router.get("/type/:classificationId", invController.buildByClassificationId);
+router.get("/type/:classificationId",
+    invController.buildByClassificationId);
 
-router.get("/inv", utilities.handleErrors(invController.buildHome))
+router.get("/inv",
+    utilities.handleErrors(invController.buildHome))
 
 
 // this is the new individual vehicle view
 // Route to build inventory by classification view
 
-router.get("/detail/:inv_id", invController.buildByinv_id);
+router.get("/detail/:inv_id",
+    utilities.handleErrors(invController.buildByinv_id));
 // module.exports = detailRouter;
-router.get("/", invController.buildManagement);
+router.get("/",
+    utilities.handleErrors(invController.buildManagementView));
 
 
 router.post(
@@ -52,6 +66,34 @@ router.post(
     utilities.handleErrors(invController.registerVehicle)
 )
 
+router.get(
+    "/getInventory/:classification_id",
+    utilities.checkAccountType,
+    utilities.handleErrors(invController.getInventoryJSON)
+)
+// Route to deliver inventory editor
+router.get(
+    "/update/:inventory_id",
+    utilities.handleErrors(invController.buildUpdateInventoryView));
+
+
+// Post for update inventory
+router.post(
+    "/update",
+    // validate.addInvRules(),
+    inventoryValidate.addInventoryRules(),
+    inventoryValidate.checkUpdateData,
+    utilities.handleErrors(invController.updateInventory));
+
+// Deliver the delete confirmation view
+router.get(
+    "/delete/:inv_id",
+    utilities.handleErrors(invController.deleteView));
+
+// Process the delete inventory request
+router.post(
+    "/delete",
+    utilities.handleErrors(invController.deleteItem));
 
 
 module.exports = router;

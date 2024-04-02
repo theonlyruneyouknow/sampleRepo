@@ -34,6 +34,17 @@ hero {
 
 }
 
+#pswdBtn {
+  border: 2px solid #000;
+  border-radius: 5px;
+  padding: 2px;
+  margin-top: 1em;
+  font-size: small;
+  width: 7em;
+  text-align: center;
+}
+
+
 .center {
   display: block;
   margin-left: auto;

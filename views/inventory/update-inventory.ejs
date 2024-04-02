@@ -16,7 +16,7 @@
                 <!-- <h2>HTML Forms</h2> -->
 
 
-                <form action="add_inventory" method="post">
+                <form action="update-inventory" method="post">
                     <label for="classification">Classification:</label><br>
                     <%- classificationList %>
                         <input type="hidden" id="classification_id" name="classification_id" required value="">
@@ -47,8 +47,11 @@
 
                         <br>
 
-                        <button class="button">Add Vehicle</button>
-                        <!-- <input type="submit" value="Submit"> -->
+                        <button class="button">Update Vehicle</button>
+                        <input type="hidden" name="inv_id" <% if(locals.inv_id) { %> value="<%= locals.inv_id %>"
+                            <% } %>>
+
+                                <!-- <input type="submit" value="Submit"> -->
                 </form>
                 <!-- <div>No Account? No Problem: <a href="/account/register">Sign Up</a></div> -->
 

@@ -47,6 +47,31 @@ validate.registationRules = () => {
     ]
 }
 
+validate.loginRules = () => {
+    return [
+        // firstname is required and must be string
+        body("account_email")
+            .trim()
+            .escape()
+            .notEmpty()
+            .isLength({ min: 1 })
+            .withMessage("Please provide a account_email."), // on error this message is sent.
+
+        // lastname is required and must be string
+        body("account_password")
+            .trim()
+            .notEmpty()
+            .isStrongPassword({
+                minLength: 4, // 4 for testing, 12 for production
+                minLowercase: 1,
+                minUppercase: 1,
+                minNumbers: 1,
+                minSymbols: 1,
+            })
+            .withMessage("Password does not meet requirements."),
+    ]
+}
+
 
 /* ******************************
  * Check data and return errors or continue to registration
@@ -71,6 +96,26 @@ validate.checkRegData = async (req, res, next) => {
 }
 
 
+/* ******************************
+ * Check data and return errors or continue to registration
+ * ***************************** */
+validate.checkLoginData = async (req, res, next) => {
+    const { account_email } = req.body
+    let errors = []
+    errors = validationResult(req)
+    if (!errors.isEmpty()) {
+        let nav = await utilities.getNav()
+        res.render("account/login", {
+            errors,
+            title: "Login",
+            nav,
+
+            account_email,
+        })
+        return
+    }
+    next()
+}
 
 
 

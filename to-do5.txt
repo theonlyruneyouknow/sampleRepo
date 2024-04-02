@@ -1,0 +1,14 @@
+This a To-Do list for week 5.
+ 
+Task 1 calls for altering the header partial file in order to hide the "My Account" link when the client is logged in and display instead a "Logout" link. 
+In addition, a welcome message, which is a link to the account management view, is also displayed when the client is logged in, but removed when they are not.
+
+Task 2 requires you to write middleware to check the account type for the logged in client and only allow employee or admin types into restricted areas of the application as described in the directions.
+
+Task 3 is to alter the account management view based on the account type. However, the ability to begin an account update process will be added for all clients to the view, regardless of the account type of the client.
+
+Task 4 involves building the view where the client can edit their registration information or change a password. These are two separate items allowing the client to change data without changing the password, and vice versa.
+
+Task 5 is to build the route, controller and model processes to deliver and process the account update processes from tasks 3 and 4.
+
+task 6 is to build the actually logout process.
