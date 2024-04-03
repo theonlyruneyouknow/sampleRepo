@@ -6,6 +6,7 @@ let classificationList = document.querySelector("#classificationList")
 classificationList.addEventListener("change", function () {
     let classification_id = classificationList.value
     console.log(`classification_id is: ${classification_id}`)
+    console.log("Rune")
     let classIdURL = "/inv/getInventory/" + classification_id
     fetch(classIdURL)
         .then(function (response) {

@@ -68,7 +68,7 @@ router.post(
 
 router.get(
     "/getInventory/:classification_id",
-    utilities.checkAccountType,
+    // utilities.checkAccountType,
     utilities.handleErrors(invController.getInventoryJSON)
 )
 // Route to deliver inventory editor
@@ -76,6 +76,17 @@ router.get(
     "/update/:inventory_id",
     utilities.handleErrors(invController.buildUpdateInventoryView));
 
+
+router.get("/edit", utilities.handleErrors(invController.buildEdit))
+// router.get("/login", accountController.registerAccount)
+
+// Post for update inventory
+router.post(
+    "/edit",
+    // validate.addInvRules(),
+    inventoryValidate.addInventoryRules(),
+    inventoryValidate.checkUpdateData,
+    utilities.handleErrors(invController.updateInventory));
 
 // Post for update inventory
 router.post(

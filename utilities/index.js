@@ -25,7 +25,7 @@ Util.getNav = async function (req, res, next) {
         list += "</li>"
     })
     list += "</ul>"
-    console.log(data.row)
+    // console.log(data.row)
     return list
 }
 

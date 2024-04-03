@@ -29,7 +29,7 @@ invCont.buildInventory = async function (req, res, next) {
  *  Build inventory by classification view
  * ************************** */
 invCont.buildByClassificationId = async function (req, res, next) {
-    const classification_id = req.params.classificationId
+    const classification_id = req.params.classification_id
     const data = await invModel.getInventoryByClassificationId(classification_id)
     const grid = await utilities.buildClassificationGrid(data)
     let nav = await utilities.getNav()
@@ -154,10 +154,10 @@ invCont.buildManagementView = async function (req, res, next) {
 }
 
 invCont.getInventoryJSON = async (req, res, next) => {
-    const classification_id = parseInt(req.params.classificationId)
+    const classification_id = parseInt(req.params.classification_id)
     const checkInvData = await invModel.getInventoryByClassificationId(classification_id)
-    if (invData[0].inv_id) {
-        return res.json(invData)
+    if (checkInvData[0].inv_id) {
+        return res.json(checkInvData)
     } else {
         next(new Error("No data Returned"))
     }
@@ -243,6 +243,21 @@ invCont.registerVehicle = async function (req, res, next) {
  * Build New Inventory View
  **************************************/
 invCont.buildInventory = async function (req, res, next) {
+    const nav = await utilities.getNav();
+    const { classification_id } = req.body;
+    const classificationList = await utilities.buildClassificationList(classification_id);
+    res.render("inventory/add_inventory", {
+        title: "Add New Inventory",
+        nav,
+        classificationList,
+        errors: null
+    });
+};
+
+/*****************************************
+ * Build New Inventory View
+ **************************************/
+invCont.buildEdit = async function (req, res, next) {
     const nav = await utilities.getNav();
     const { classification_id } = req.body;
     const classificationList = await utilities.buildClassificationList(classification_id);
@@ -343,6 +358,20 @@ invCont.updateInventory = async function (req, res, next) {
     }
 }
 
+
+/*************************************
+ * Build Management View
+ ***************************************/
+invCont.buildManagementList = async function (req, res, next) {
+    const nav = await utilities.getNav();
+    const classificationList = await utilities.buildClassificationList();
+    res.render("./inventory/management", {
+        title: "Management",
+        nav,
+        classificationList,
+        errors: null,
+    });
+};
 
 
 module.exports = invCont
