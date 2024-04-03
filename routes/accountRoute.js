@@ -50,6 +50,9 @@ router.post(
     utilities.handleErrors(accountController.registerAccount)
 )
 
+// Route to handle logout
+router.get("/logout", utilities.handleErrors(accountController.logout));
+
 // router.post(
 //     "/register",
 //     // regValidate.loginRules(),

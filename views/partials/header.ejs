@@ -3,12 +3,24 @@
         <a href="/" title="Return to home page">CSE Motors</a>
     </span>
     <span class="tools">
-        <a title="Click to log in" href="/account/login">My Account</a>
+        <!-- <a title="Click to log in" href="/account/login">My Account</a> -->
+        <!-- <%# if (locals.loggedin) { %>
+            <a href="/account/" title="Manage Account">Welcome <%#= locals.accountData.account_firstname %> |</a>
+            <a href="/account/logout" title="Click to logout"> Logout</a>
+            <%# } else { %>
+                <a href="/account/login" title="Click to login">My Account</a>
+                <%# } %> -->
     </span>
     <span class="management">
         <a title="INV Management" href="/inv/">Management</a>
     </span>
-    <div id="tools">
-
+    <div class="tools">
+        <% if (locals.loggedin) { %>
+            <a href="/account/" title="Manage Account">Welcome <%= locals.accountData.account_firstname %> |</a>
+            <div class="in_out"> <a href="/account/logout" title="Click to logout"> Logout</a>
+                <% } else { %>
+                    <a href="/account/login" title="Click to login">My Account</a>
+                    <% } %>
+            </div>
     </div>
 </header>

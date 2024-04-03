@@ -90,8 +90,8 @@ h2 {
   position: absolute;
   /* margin: 5%; */
   /* text-indent: -50px; */
-  top: 68px;
-  right: 100px;
+  top: 80px;
+  right: 150px;
   font-size: 18px;
 
 }
@@ -100,11 +100,22 @@ h2 {
   position: absolute;
   /* margin: 5%; */
   /* text-indent: -50px; */
-  top: 68px;
+  top: 58px;
   right: 250px;
   font-size: 18px;
 
 }
+
+.in_out a:link {
+  position: absolute;
+  /* margin: 5%; */
+  /* text-indent: -50px; */
+  top: 58px;
+  right: 150px;
+  font-size: 18px;
+
+}
+
 
 
 #tools {

@@ -125,5 +125,21 @@ async function accountLogin(req, res) {
     }
 }
 
+
+
+/* ****************************************
+ *  Logout function
+ * ************************************ */
+async function logout(req, res) {
+    try {
+        res.clearCookie('jwt');
+        res.redirect('/');
+    } catch (error) {
+        console.error('Error logging out:', error);
+        return new Error('Bad Logout')
+    }
+}
+
+
 //   module.exports = { buildLogin, buildSignup }
-module.exports = { buildLogin, buildRegister, registerAccount, buildManagement, accountLogin }
+module.exports = { logout, buildLogin, buildRegister, registerAccount, buildManagement, accountLogin }
