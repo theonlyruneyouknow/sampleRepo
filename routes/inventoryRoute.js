@@ -31,7 +31,7 @@ router.get("/add_inventory",
     utilities.handleErrors(invController.buildInventory))
 
 
-router.get("/type/:classificationId",
+router.get("/type/:classification_id",
     invController.buildByClassificationId);
 
 router.get("/inv",
@@ -71,15 +71,22 @@ router.get(
     // utilities.checkAccountType,
     utilities.handleErrors(invController.getInventoryJSON)
 )
-// Route to deliver inventory editor
+// // Route to deliver inventory editor
+// router.get(
+//     "/update/:inv_id",
+//     // "/update/:inventory_id",
+//     utilities.handleErrors(invController.buildUpdateInventoryView));
+
 router.get(
-    "/update/:inventory_id",
+    "/edit/:inv_id",
+    // "/edit/:inventory_id",
     utilities.handleErrors(invController.buildUpdateInventoryView));
 
 
-router.get("/edit", utilities.handleErrors(invController.buildEdit))
+// router.get("/inv/edit", utilities.handleErrors(invController.buildEdit))
+// router.get("/edit", utilities.handleErrors(invController.buildEdit))
 // router.get("/login", accountController.registerAccount)
-
+http://localhost:5500/inv/type/1
 // Post for update inventory
 router.post(
     "/edit",

@@ -158,6 +158,10 @@ app.use("/signup", require("./routes/accountRoute"))
 app.use("/register", require("./routes/accountRoute"))
 //Index route
 
+
+
+// app.use("/inv/edit", require("./routes/accountRoute"))
+
 // app.get("/", function (reg, res) {
 //   res.render("index", { title: "home" })
 // })
@@ -171,6 +175,7 @@ app.use("/inv", inventoryRoute) //original but shows 404
 app.use(async (req, res, next) => {
   next({ status: 404, message: 'Sorry, we appear to have lost that page. Have you checked the route?' })
 })
+
 
 
 

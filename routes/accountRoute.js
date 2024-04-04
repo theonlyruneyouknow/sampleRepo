@@ -72,7 +72,7 @@ router.get("/logout", utilities.handleErrors(accountController.logout));
 
 
 // Route to build inventory by classification view
-// router.get("/type/:classificationId", invController.buildByClassificationId);
+// router.get("/type/:classification_id", invController.buildByClassificationId);
 
 
 // this is the new individual vehicle view

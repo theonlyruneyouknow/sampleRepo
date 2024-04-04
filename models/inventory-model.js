@@ -87,7 +87,6 @@ async function getInventoryByinv_id(inv_id) {
 
 
 
-
 /* ***************************
  *  Update Inventory Data
  * ************************** */
