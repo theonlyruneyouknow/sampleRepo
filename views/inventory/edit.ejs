@@ -16,11 +16,13 @@
                 <!-- <h2>HTML Forms</h2> -->
 
 
-                <form action="edit-inventory" method="post" id="update-form">
+                <!-- <form action="edit-inventory" method="post" id="update-form"> -->
+                <form action="edit" method="post" id="update-form">
                     <label for="classification">Classification:</label><br>
                     <%- classificationSelect %>
-                        <input type="hidden" id="classification_id" name="classification_id" required value="">
-                        <br>
+                        <input id="classification_id" name="classification_id" required
+                            value="<%= locals.classification_id %>">">
+                        <br>type="hidden"
 
                         <label for="name">Make:</label><br>
                         <input type="text" id="inv_make" name="inv_make" required value="<%= locals.inv_make %>"><br>
@@ -47,7 +49,7 @@
 
                         <br>
 
-                        <button class="button" id="disabled">Edit Vehicle</button>
+                        <button class="button" id="disabled">Save Vehicle Edits</button>
                         <!-- <input type="submit" value="Submit"> -->
                 </form>
                 <!-- <div>No Account? No Problem: <a href="/account/register">Sign Up</a></div> -->
