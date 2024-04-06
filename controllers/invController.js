@@ -25,6 +25,7 @@ invCont.buildByClassificationId = async function (req, res, next) {
     const classification_id = req.params.classification_id
     const data = await invModel.getInventoryByClassificationId(classification_id)
     const grid = await utilities.buildClassificationGrid(data)
+
     let nav = await utilities.getNav()
     const className = data[0].classification_name
     res.render("inventory/classification", {
@@ -152,6 +153,7 @@ invCont.buildByinv_id = async function (req, res, next) {
         // inv_color,
         nav,
         grid,
+
     })
 }
 
