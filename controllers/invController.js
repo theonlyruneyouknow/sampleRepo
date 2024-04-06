@@ -1,4 +1,5 @@
 const invModel = require("../models/inventory-model")
+const revsModel = require("../models/review-model")
 const utilities = require("../utilities/")
 // const buildClassificationList = require("../utilities/buildClassificationList")
 const express = require("express")
@@ -87,7 +88,7 @@ invCont.deleteByinv_id = async function (req, res, next) {
 
     // " HELP Rune " +
     res.render("./inventory/vehicles", {
-        title: inv_year + inv_make + " " + inv_model,
+        title: inv_year + " " + inv_make + " " + inv_model,
         inv_make,
         // inv_model,
         // inv_year,
@@ -119,6 +120,8 @@ invCont.deleteByinv_id = async function (req, res, next) {
 invCont.buildByinv_id = async function (req, res, next) {
     const inv_id = req.params.inv_id
     const data = await invModel.getInventoryByinv_id(inv_id)
+
+    const revs = await revsModel.getRevsByinv_id(inv_id)
     const grid = await utilities.buildinv_id(data)
     let nav = await utilities.getNav()
     const inv_year = data[0].inv_year
@@ -143,7 +146,7 @@ invCont.buildByinv_id = async function (req, res, next) {
 
     // " HELP Rune " +
     res.render("./inventory/vehicles", {
-        title: inv_year + inv_make + " " + inv_model,
+        title: inv_year + " " + inv_make + " " + inv_model,
         inv_make,
         // inv_model,
         // inv_year,

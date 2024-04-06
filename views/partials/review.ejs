@@ -1,4 +1,7 @@
 <h2>Customer Review</h2>
+
+<p>Be the first to write a review.<br>No reviews for this item. </p>
+
 <%#- messages() %>
 
     <span>
@@ -6,7 +9,7 @@
         <!-- <h2>HTML Forms</h2> -->
         <div id="hideform" type="hidden">
             <h2>Write Review</h2>
-            <form action="/account/register" method="post">
+            <form action="/details/:inv_id" method="post">
                 <label for="title">Title:</label><br>
                 <input type="text" id="rev_title" name="rev_title" value=""><br>
 
