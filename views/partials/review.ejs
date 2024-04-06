@@ -4,21 +4,55 @@
     <span>
 
         <!-- <h2>HTML Forms</h2> -->
+        <div id="hideform" type="hidden">
+            <h2>Write Review</h2>
+            <form action="/account/register" method="post">
+                <label for="title">Title:</label><br>
+                <input type="text" id="rev_title" name="rev_title" value=""><br>
 
-        <form action="/account/register" method="post">
-            <label for="title">Title:</label><br>
-            <input type="text" id="rev_title" name="rev_title" value=""><br>
-
-            <label for="body">Body:</label><br>
-            <input type="text" id="rev_body" name="rev_body" value=""><br>
-            <label for="date">Date:</label><br>
-            <input type="date" id="rev_date" name="rev_date" value=""><br>
-            <label for="test">Rating:</label><br>
-            <input type="text" id="rev_rating" name="rev_rating" value=""><br><br>
-            <button class="button">Contribute Rating</button>
-            <!-- <input type="submit" value="Submit"> -->
-        </form>
-        <!-- <div>No Account? No Problem: <a href="/account/signup">Sign Up</a></div> -->
-
+                <label for="body">Body:</label><br>
+                <input type="text" id="rev_body" name="rev_body" value=""><br>
+                <label for="date">Date:</label><br>
+                <input type="date" id="rev_date" name="rev_date" value=""><br>
+                <label for="test">Rating:</label><br>
+                <input type="text" id="rev_rating" name="rev_rating" value=""><br><br>
+                <button class="button">Contribute Rating</button>
+                <!-- <input type="submit" value="Submit"> -->
+            </form>
+            <!-- <div>No Account? No Problem: <a href="/account/signup">Sign Up</a></div> -->
+        </div>
+        <!-- <button class="button" id="showForm">Hide Rating Form</button> -->
     </span>
     </picture>
+    <button onclick="myFunction()" id="rateBtn">Hide Rating Form</button>
+
+
+    <script>
+        function myFunction() {
+            var x = document.getElementById("hideform");
+            if (x.style.display === "none") {
+                x.style.display = "block";
+                rateBtn.innerHTML = "Hide Rating Form";
+            } else {
+                x.style.display = "none";
+                rateBtn.innerHTML = "Write a Rating";
+            }
+        }
+    </script>
+
+
+
+    <!-- <script>
+        const pswdBtn = document.querySelector("#showForm");
+        pswdBtn.addEventListener("click", function () {
+            const pswdInput = document.getElementById("account_password");
+            const type = pswdInput.getAttribute("type");
+            if (type == "password") {
+                pswdInput.setAttribute("type", "text");
+                pswdBtn.innerHTML = "Hide Password";
+            } else {
+                pswdInput.setAttribute("type", "password");
+                pswdBtn.innerHTML = "Show Password";
+            }
+        });
+    </script> -->
