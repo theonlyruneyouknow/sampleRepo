@@ -6,15 +6,8 @@ const utilities = require("../utilities")
 const regValidate = require('../utilities/account-validation')
 // const detailRouter = new express.Router()
 
-
-
 router.get("/login", utilities.handleErrors(accountController.buildLogin))
 // router.get("/login", accountController.registerAccount)
-
-
-
-
-
 
 // router.get("/signup", utilities.handleErrors(accountController.buildSignup))
 
@@ -24,12 +17,10 @@ router.get("/register", utilities.handleErrors(accountController.buildRegister))
 // router.get("/management", utilities.handleErrors(accountController.buildManagement))
 router.get("/inv", utilities.handleErrors(accountController.buildHome))
 
-router.get(
-    "/",
+router.get("/",
     utilities.checkLogin,
     utilities.handleErrors(accountController.buildManagement)
 )
-
 
 // router.get("/", utilities.handleErrors(accountController.buildHome))
 // const detailRouter = new express.detailRouter()
@@ -38,22 +29,21 @@ router.get(
 // Process the registration data
 
 // Process the login request
-router.post(
-    "/login",
+router.post("/login",
     regValidate.loginRules(),
     regValidate.checkLoginData,
     utilities.handleErrors(accountController.accountLogin)
 )
 
-router.post(
-    "/register",
+router.post("/register",
     regValidate.loginRules(),
     regValidate.checkLoginData,
     utilities.handleErrors(accountController.registerAccount)
 )
 
 // Route to handle logout
-router.get("/logout", utilities.handleErrors(accountController.logout));
+router.get("/logout",
+    utilities.handleErrors(accountController.logout));
 
 // router.post(
 //     "/register",
@@ -62,7 +52,6 @@ router.get("/logout", utilities.handleErrors(accountController.logout));
 //     utilities.handleErrors(accountController.registerAccount)
 // )
 
-
 // router.post(
 //     "/add_inventory",
 //     regValidate.inventoryRules(),
@@ -70,10 +59,8 @@ router.get("/logout", utilities.handleErrors(accountController.logout));
 //     utilities.handleErrors(accountController.registerVehicle)
 // )
 
-
 // Route to build inventory by classification view
 // router.get("/type/:classification_id", invController.buildByClassificationId);
-
 
 // this is the new individual vehicle view
 // Route to build inventory by classification view

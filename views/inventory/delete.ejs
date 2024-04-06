@@ -1,4 +1,4 @@
-<h1>Edit Inventory</h1>
+<h1>Delete Inventory</h1>
 <%- messages() %>
 
     <% if (errors) { %>
@@ -14,9 +14,9 @@
             <span>
 
                 <!-- <form action="edit-inventory" method="post" id="update-form"> -->
-                <form action="/inv/update" method="post" id="update-form">
+                <form action="/inv/" method="post" id="delete-form">
                     <label for="classification">Classification:</label><br>
-                    <%- classificationSelect %>
+                    <%- classificationList %>
                         <!-- <input id="classification_id" name="classification_id" required
                             value="<%#= locals.classification_id %>">"> -->
                         <input id="inv_id" name="inv_id" type="hidden" required value="<%= locals.inv_id %>">">
@@ -43,7 +43,7 @@
                         <label for="name">Color:</label><br>
                         <input type="text" id="inv_color" name="inv_color" required value="<%= locals.inv_color %>"><br>
                         <br>
-                        <button class="button" id="disabled">Save Vehicle Edits</button>
+                        <button class="button" id="disabled">Delete Vehicle</button>
                         <!-- <input type="submit" value="Submit"> -->
                 </form>
                 <!-- <div>No Account? No Problem: <a href="/account/register">Sign Up</a></div> -->

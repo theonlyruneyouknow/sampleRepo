@@ -15,11 +15,7 @@ const pool = require('./database/')
 const bodyParser = require("body-parser")
 const cookieParser = require("cookie-parser")
 const app = express()
-
-
-
 const Util = require("./utilities/index")
-
 const static = require("./routes/static")
 const inventoryRoute = require("./routes/inventoryRoute")
 const accountRoute = require("./routes/accountRoute")
@@ -29,18 +25,12 @@ const accountRoute = require("./routes/accountRoute")
 // console.log("check vari", Util)
 // console.log("check var", Util)
 
-
-
-
-
 /* ***********************
  * Middleware
  * ************************/
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
-
 app.use(cookieParser())
-
 app.use(utilities.checkJWTToken)
 
 app.use(session({
@@ -61,16 +51,12 @@ app.use(function (req, res, next) {
   next()
 })
 
-
 /* ***********************
  * View Engine and Templates
  *************************/
 app.set("view engine", "ejs")
 app.use(expressLayouts)
 app.set("layout", "./layouts/layout") // not at views root
-
-
-
 
 /* ****************************************
 *  Deliver login view
@@ -99,7 +85,6 @@ async function buildRegister(req, res, next) {
   res.render("account/register", {
     title: "Sign Up",
     nav,
-
     errors: null,
   })
 }
@@ -132,11 +117,6 @@ async function buildInventory(req, res, next) {
 
 // module.exports = { buildLogin, buildSignup }
 
-
-
-
-
-
 /* ***********************
  * Routes
  *************************/
@@ -147,21 +127,16 @@ app.get("/", utilities.handleErrors(baseController.buildHome))
 // Inventory routes
 // app.use("/inv", require("./routes/inventoryRoute"))
 
-
 // app.use("/inv", require("./routes/accountRoute"))
 app.use("/account", require("./routes/accountRoute"))
-
 app.use("/login", require("./routes/accountRoute"))
-app.use("/management", require("./routes/accountRoute"))
+app.use("/management", require("./routes/inventoryRoute"))
+// app.use("/management", require("./routes/accountRoute"))
 app.use("/signup", require("./routes/accountRoute"))
-
 app.use("/register", require("./routes/accountRoute"))
 //Index route
 
-
-
 // app.use("/inv/edit", require("./routes/accountRoute"))
-
 // app.get("/", function (reg, res) {
 //   res.render("index", { title: "home" })
 // })
@@ -169,11 +144,9 @@ app.use("/register", require("./routes/accountRoute"))
 app.use("/inv", inventoryRoute) //original but shows 404
 
 // app.get("/inv", /inventory/management)
-
-
 // File Not Found Route - must be last route in list
 app.use(async (req, res, next) => {
-  next({ status: 404, message: 'Sorry, we appear to have lost that page. Have you checked the route?' })
+  next({ status: 404, message: 'Sorry, we appear to have lost that page. Have you checked the route in server.js?' })
 })
 
 

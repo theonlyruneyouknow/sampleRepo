@@ -1,6 +1,5 @@
 <h1>Add Classification</h1>
 <%- messages() %>
-
     <!-- // here goes the error messages -->
     <% if (errors) { %>
         <ul class="notice">
@@ -11,22 +10,15 @@
                 <% }) %>
         </ul>
         <% } %>
-
-
             <span>
-
                 <!-- <h2>HTML Forms</h2> -->
-
                 <form action="add_classification" method="post">
                     <label for="name">Classification Name:</label><br>
                     <input type="text" id="classification_name" name="classification_name" required value=""><br>
-
                     <br><br>
-
                     <button class="button">Add Classification</button>
                     <!-- <input type="submit" value="Submit"> -->
                 </form>
                 <!-- <div>No Account? No Problem: <a href="/account/register">Sign Up</a></div> -->
-
             </span>
             </picture>

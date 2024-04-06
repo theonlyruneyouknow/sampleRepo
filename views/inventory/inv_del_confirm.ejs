@@ -15,13 +15,13 @@
                 <% } %>
                     <form id="deleteForm" action="/inv/delete" method="post">
                         <label for="make">Vehicle Make: <input type="text" name="inv_make" id="invMake" readonly
-                                value="<%= locals.inv_make %>" /></label>
+                                value="<%= locals.inv_make %>" /></label><br>
                         <label for="model">Vehicle Model: <input type="text" name="inv_model" id="invModel" readonly
-                                value="<%= locals.inv_model %>" /></label>
+                                value="<%= locals.inv_model %>" /></label><br>
                         <label for="year">Model Year: <input type="number" name="inv_year" id="invYear" readonly
-                                value="<%= locals.inv_year %>" /></label>
+                                value="<%= locals.inv_year %>" /></label><br>
                         <label for="price">Price: <input type="number" name="inv_price" id="invPrice" readonly
-                                value="<%= locals.inv_price  %>" /></label>
+                                value="<%= locals.inv_price  %>" /></label><br>
                         <button type="submit">Delete Vehicle</button>
                         <input type="hidden" name="inv_id" <% if(locals.inv_id) { %> value="<%= locals.inv_id %>"<% } %>
                                 >

@@ -1,6 +1,4 @@
 // Needed Resources 
-
-
 const express = require("express")
 const router = new express.Router()
 const utilities = require("../utilities")
@@ -27,9 +25,9 @@ const inventoryValidate = require("../utilities/inventory-validation");
 
 router.get("/add_classification",
     utilities.handleErrors(invController.buildClassification))
+
 router.get("/add_inventory",
     utilities.handleErrors(invController.buildInventory))
-
 
 router.get("/type/:classification_id",
     invController.buildByClassificationId);
@@ -37,9 +35,12 @@ router.get("/type/:classification_id",
 router.get("/inv",
     utilities.handleErrors(invController.buildHome))
 
-
 // this is the new individual vehicle view
 // Route to build inventory by classification view
+
+router.get("/delete/:inv_id",
+    utilities.handleErrors(invController.buildDeleteInventoryView));
+// utilities.handleErrors(invController.deleteByinv_id));buildUpdateInventoryView
 
 router.get("/detail/:inv_id",
     utilities.handleErrors(invController.buildByinv_id));
@@ -47,17 +48,13 @@ router.get("/detail/:inv_id",
 router.get("/",
     utilities.handleErrors(invController.buildManagementView));
 
-
-router.post(
-    "/add_classification",
+router.post("/add_classification",
     regValidate.classificationRules(),
     regValidate.checkClassificationData,
     utilities.handleErrors(invController.registerClassification)
 )
 
-
-router.post(
-    "/add_inventory"
+router.post("/add_inventory"
     ,
     regValidate.inventoryRules()
     ,
@@ -66,8 +63,7 @@ router.post(
     utilities.handleErrors(invController.registerVehicle)
 )
 
-router.get(
-    "/getInventory/:classification_id",
+router.get("/getInventory/:classification_id",
     // utilities.checkAccountType,
     utilities.handleErrors(invController.getInventoryJSON)
 )
@@ -77,8 +73,7 @@ router.get(
 //     // "/update/:inventory_id",
 //     utilities.handleErrors(invController.buildUpdateInventoryView));
 
-router.get(
-    "/edit/:inv_id",
+router.get("/edit/:inv_id",
     // "/edit/:inventory_id",
     utilities.handleErrors(invController.buildUpdateInventoryView));
 
@@ -88,30 +83,25 @@ router.get(
 // router.get("/login", accountController.registerAccount)
 http://localhost:5500/inv/type/1
 // Post for update inventory
-router.post(
-    "/edit",
-    // validate.addInvRules(),
-    inventoryValidate.addInventoryRules(),
-    inventoryValidate.checkUpdateData,
-    utilities.handleErrors(invController.updateInventory));
+// router.post("/edit",
+//     // validate.addInvRules(),
+//     inventoryValidate.addInventoryRules(),
+//     inventoryValidate.checkUpdateData,
+//     utilities.handleErrors(invController.updateInventory));
 
 // Post for update inventory
-router.post(
-    "/update",
+router.post("/update",
     // validate.addInvRules(),
     inventoryValidate.addInventoryRules(),
     inventoryValidate.checkUpdateData,
     utilities.handleErrors(invController.updateInventory));
 
 // Deliver the delete confirmation view
-router.get(
-    "/delete/:inv_id",
-    utilities.handleErrors(invController.deleteView));
+// router.get("/delete/:inv_id",
+//     utilities.handleErrors(invController.deleteItem));
 
 // Process the delete inventory request
-router.post(
-    "/delete",
-    utilities.handleErrors(invController.deleteItem));
-
+router.post("/delete",
+    utilities.handleErrors(invController.deleteInventory));
 
 module.exports = router;

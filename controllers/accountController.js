@@ -14,7 +14,6 @@ async function buildLogin(req, res, next) {
     })
 }
 
-
 /* ****************************************
 *  Deliver signup view
 * *************************************** */
@@ -43,7 +42,6 @@ async function buildManagement(req, res, next) {
         errors: null,
     })
 }
-
 
 /* ****************************************
 *  Process Registration
@@ -91,7 +89,6 @@ async function registerAccount(req, res) {
     }
 }
 
-
 /* ****************************************
  *  Process login request
  * ************************************ */
@@ -125,8 +122,6 @@ async function accountLogin(req, res) {
     }
 }
 
-
-
 /* ****************************************
  *  Logout function
  * ************************************ */
@@ -139,7 +134,6 @@ async function logout(req, res) {
         return new Error('Bad Logout')
     }
 }
-
 
 //   module.exports = { buildLogin, buildSignup }
 module.exports = { logout, buildLogin, buildRegister, registerAccount, buildManagement, accountLogin }
