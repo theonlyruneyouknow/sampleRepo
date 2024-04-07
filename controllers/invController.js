@@ -131,7 +131,7 @@ invCont.buildByinv_id = async function (req, res, next) {
     const inv_miles = data[0].inv_miles
     const inv_color = data[0].inv_color
     const inv_price = data[0].inv_price
-
+    const account_id = res.locals.accountData.account_id
 
     // inv_make,
     //     inv_model,
@@ -148,6 +148,8 @@ invCont.buildByinv_id = async function (req, res, next) {
     res.render("./inventory/vehicles", {
         title: inv_year + " " + inv_make + " " + inv_model,
         inv_make,
+        inv_id,
+        account_id,
         // inv_model,
         // inv_year,
         // inv_description,

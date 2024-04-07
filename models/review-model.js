@@ -1,12 +1,14 @@
+const pool = require("../database/")
+
 
 /* *****************************
 *   Register new account
 * *************************** */
-async function registerReview(rev_id, rev_title, rev_body, rev_date, rev_rating, account_id, inv_id) {
+async function registerReview(rev_title, rev_body, rev_rating, account_id, inv_id) {
     try {
-        const sql = "INSERT INTO public.review(rev_id, rev_title, rev_body, rev_date, rev_rating, account_id, inv_id) VALUES (?, ?, ?, ?, ?, ?, ?)RETURNING *"
+        const sql = "INSERT INTO public.review( rev_title, rev_body, rev_rating, account_id, inv_id) VALUES ( $1, $2, $3, $4, $5) RETURNING *"
 
-        return await pool.query(sql, [rev_id, rev_title, rev_body, rev_date, rev_rating, account_id, inv_id])
+        return await pool.query(sql, [rev_title, rev_body, rev_rating, account_id, inv_id])
     } catch (error) {
         return error.message
     }

@@ -7,7 +7,7 @@ require("dotenv").config()
 
 async function registerReview(req, res) {
     let nav = await utilities.getNav()
-    const { rev_id, rev_title, rev_body, rev_date, rev_rating, account_id, inv_id } = req.body
+    const { rev_title, rev_body, rev_date, rev_rating, account_id, inv_id } = req.body
     // Hash the password before storing
     // let hashedPassword
     try {
@@ -22,7 +22,7 @@ async function registerReview(req, res) {
         })
     }
     const regResult = await reviewModel.registerReview(
-        rev_id,
+
         rev_title,
         rev_body,
         rev_date,
@@ -49,3 +49,6 @@ async function registerReview(req, res) {
         })
     }
 }
+
+
+module.exports = { registerReview }

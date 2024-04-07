@@ -4,6 +4,7 @@ const router = new express.Router()
 const utilities = require("../utilities")
 const regValidate = require('../utilities/inventory-validation')
 
+const revController = require("../controllers/revController")
 const invController = require("../controllers/invController")
 
 const inventoryValidate = require("../utilities/inventory-validation");
@@ -30,7 +31,7 @@ router.get("/add_inventory",
     utilities.handleErrors(invController.buildInventory))
 
 router.get("/type/:classification_id",
-    invController.buildByClassificationId);
+    utilities.handleErrors(invController.buildByClassificationId));
 
 router.get("/inv",
     utilities.handleErrors(invController.buildHome))
@@ -100,6 +101,8 @@ router.post("/update",
 // router.get("/delete/:inv_id",
 //     utilities.handleErrors(invController.deleteItem));
 
+router.post("/detail/add_review",
+    utilities.handleErrors(revController.registerReview));
 // Process the delete inventory request
 router.post("/delete",
     utilities.handleErrors(invController.deleteInventory));

@@ -83,8 +83,10 @@ Util.buildClassificationGrid = async function (data) {
                 + new Intl.NumberFormat('en-US').format(vehicle.inv_price) + '</span>'
             grid += '</div>'
             grid += '</li>'
+
+
         })
-        grid += '</ul>'
+
     } else {
         grid += '<p class="notice">Sorry, no matching vehicles could be found.</p>'
     }
@@ -157,6 +159,62 @@ Util.buildinv_id = async function (data) {
             grid += '</div>'
         })
         grid += '</div>'
+        grid += '</ul>'
+        grid += ' < h2 > Customer Review</h2 >'
+        grid += ''
+
+        grid += '<p>Be the first to write a review.<br>No reviews for this item. </p>'
+
+
+        grid += '<%# - messages() %>'
+
+
+        grid += '       <span>'
+
+
+        grid += '         <!-- <h2>HTML Forms</h2> -->'
+        grid += '            <div id="hideform" type="hidden">'
+        grid += '               <h2>Write Review</h2>'
+        grid += '               <form action="add_review" method="post">'
+        grid += '                    <label for="title">Title:</label><br>'
+        grid += '                        <input type="text" id="rev_title" name="rev_title" value=""><br>'
+        grid += '                            <label for="body">Body:</label><br>'
+        grid += '                                <input type="text" id="rev_body" name="rev_body" value=""><br>'
+        grid += '                                    <!-- <label for="date">Date:</label><br>'
+        grid += '                                        <input type="date" id="rev_date" name="rev_date" value=a><br> -->'
+        grid += '                                           <label for="test">Rating:</label><br>'
+        grid += '                                               <input type="text" id="rev_rating" name="rev_rating" value=""><br><br>'
+        grid += '                                                    <label for="test">Account_id:</label><br>'
+        grid += '                                                        <input type="integer" id="account_id" name="account_id" value="<%= account_id %>"><br><br>'
+        grid += '                                                            <label for="test">inv id:</label><br>'
+        grid += '                                                              <input type="integer" id="inv_id" name="inv_id" value="<%= inv_id %>"><br><br>'
+        grid += '                                                                  <button class="button">Contribute Rating</button>'
+        grid += '                                                                   <!-- <input type="submit" value="Submit"> -->'
+        grid += '                                                                   </form>'
+        grid += '                                                                   <!-- <div>No Account? No Problem: <a href="/account/signup">Sign Up</a></div>'
+
+
+        grid += '                                                                   <%# account_id %>'
+        grid += '    -->'
+        grid += '                                                                </div>'
+        grid += '                                                                   <!-- <button class="button" id="showForm">Hide Rating Form</button> -->'
+        grid += '                                                                </span>'
+        grid += '                                                               </picture>'
+        grid += '                                                                <button onclick="myFunction()" id="rateBtn">Hide Rating Form</button>'
+
+
+        grid += '                                                               <script>'
+        grid += '                                                                   function myFunction() {'
+        grid += '   var x = document.getElementById("hideform");'
+        grid += '                                                                   if (x.style.display === "none") {'
+        grid += '                                                                       x.style.display = "block";'
+        grid += '                                                                   rateBtn.innerHTML = "Hide Rating Form";'
+        grid += '    } else {'
+        grid += '                                                                       x.style.display = "none";'
+        grid += '                                                                   rateBtn.innerHTML = "Write a Rating";'
+        grid += '    }'
+        grid += '}'
+        grid += '                                                               </script>'
     } else {
         grid += '<p class="notice">Sorry, no matching vehicles could be found.</p>'
     }
