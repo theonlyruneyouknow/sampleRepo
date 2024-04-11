@@ -6,7 +6,7 @@ const pool = require("../database/")
 * *************************** */
 async function registerReview(rev_title, rev_body, rev_rating, account_id, inv_id) {
     try {
-        const sql = "INSERT INTO public.review( rev_title, rev_body, rev_rating, account_id, inv_id) VALUES ( $1, $2, $3, $4, $5) RETURNING *"
+        const sql = "INSERT INTO public.review( rev_title, rev_body, rev_rating, account_id, inv_id, rev_date) VALUES ( $1, $2, $3, $4, $5, now() ) RETURNING *"
 
         return await pool.query(sql, [rev_title, rev_body, rev_rating, account_id, inv_id])
     } catch (error) {
@@ -31,10 +31,23 @@ async function getRevsByinv_id(inv_id) {
 }
 
 
+/***********************
+ * Get all Reviews for one car
+ ***********************/
+async function getReviews(inv_id) {
+    try {
+        return await pool.query(
+            "SELECT * FROM public.review where inv_id = $1", [inv_id]
+        );
+    } catch (error) {
+        console.error("getinv_id error " + error)
+    }
+}
 
 
 
-module.exports = { registerReview, getRevsByinv_id }
+
+module.exports = { registerReview, getRevsByinv_id, getReviews }
 
 // /* *****************************
 // *   Register new account

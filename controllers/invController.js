@@ -1,10 +1,13 @@
 const invModel = require("../models/inventory-model")
 const revsModel = require("../models/review-model")
+
+const reviewModel = require("../models/review-model")
 const utilities = require("../utilities/")
 // const buildClassificationList = require("../utilities/buildClassificationList")
 const express = require("express")
 const router = new express.Router()
 const invCont = {}
+
 
 // const invCont2 = {}
 
@@ -66,6 +69,8 @@ invCont.deleteByinv_id = async function (req, res, next) {
     const data = await invModel.getInventoryByinv_id(inv_id)
     const grid = await utilities.buildinv_id(data)
     let nav = await utilities.getNav()
+
+    // const inv_id = data[0].inv_id
     const inv_year = data[0].inv_year
     const inv_make = data[0].inv_make
     const inv_model = data[0].inv_model
@@ -90,6 +95,7 @@ invCont.deleteByinv_id = async function (req, res, next) {
     res.render("./inventory/vehicles", {
         title: inv_year + " " + inv_make + " " + inv_model,
         inv_make,
+        inv_id,
         // inv_model,
         // inv_year,
         // inv_description,
@@ -119,9 +125,13 @@ invCont.deleteByinv_id = async function (req, res, next) {
  * ************************** */
 invCont.buildByinv_id = async function (req, res, next) {
     const inv_id = req.params.inv_id
+    // const account_id = req.params.account_id
     const data = await invModel.getInventoryByinv_id(inv_id)
+    const buildClassificationList = await utilities.buildClassificationList()
 
-    const revs = await revsModel.getRevsByinv_id(inv_id)
+    // const revs = await revsModel.getRevsByinv_id(inv_id)
+    // const account_id = locals.accountData.account_id
+    // const account_id = res.locals.accountData.account_id
     const grid = await utilities.buildinv_id(data)
     let nav = await utilities.getNav()
     const inv_year = data[0].inv_year
@@ -131,8 +141,8 @@ invCont.buildByinv_id = async function (req, res, next) {
     const inv_miles = data[0].inv_miles
     const inv_color = data[0].inv_color
     const inv_price = data[0].inv_price
-    const account_id = res.locals.accountData.account_id
 
+    // const inv_id = data[0].inv_id
     // inv_make,
     //     inv_model,
     //     inv_year,
@@ -149,7 +159,7 @@ invCont.buildByinv_id = async function (req, res, next) {
         title: inv_year + " " + inv_make + " " + inv_model,
         inv_make,
         inv_id,
-        account_id,
+        // account_id,
         // inv_model,
         // inv_year,
         // inv_description,

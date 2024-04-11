@@ -36,6 +36,8 @@ router.get("/type/:classification_id",
 router.get("/inv",
     utilities.handleErrors(invController.buildHome))
 
+
+
 // this is the new individual vehicle view
 // Route to build inventory by classification view
 

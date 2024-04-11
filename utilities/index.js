@@ -1,4 +1,7 @@
 const invModel = require("../models/inventory-model")
+const reviewModelModel = require("../models/review-model")
+
+const bodyParser = require("body-parser")
 const Util = {}
 
 const jwt = require("jsonwebtoken")
@@ -56,6 +59,82 @@ Util.checkAccountType = (req, res, next) => {
         return res.redirect("/account/")
     }
 }
+
+
+/* **************************************
+* Build the reviews-view HTML
+* ************************************ */
+Util.buildReviewsGrid = async function (data) {
+    let grid
+    if (data.length > 0) {
+        grid = '<ul id="inv-display">'
+        data.forEach(review => {
+            grid += '<li id="rev-display">'
+            // grid += '<a href="../../inv/detail/' + vehicle.inv_id
+            //     + '" title="View ' + ' ' + vehicle.inv_make + ' ' + vehicle.inv_model
+            //     + ' details"><img src="' + vehicle.inv_thumbnail
+            //     + '" alt="Image of ' + vehicle.inv_make + ' ' + vehicle.inv_model
+            //     + ' on CSE Motors" /></a>'
+            // grid += '<div class="namePrice">'
+            // grid += '<hr />'
+            // grid += '<p>TEST</p>'
+            grid += '<h2>'
+            grid += '<a href="../../inv/detail/' + review.title + '" title="View '
+                + review.body + ' ' + review.account_id + ' details">'
+                + review.rev_date + ' ' + review.rev_id + '</a>'
+            grid += '</h2>'
+            // grid += '<span>$'
+            //     + new Intl.NumberFormat('en-US').format(review.inv_price) + '</span>'
+            grid += '</div>'
+            grid += '</li>'
+
+
+        })
+
+    } else {
+        grid += '<p class="notice">Sorry, no matching vehicles could be found.</p>'
+    }
+    return grid
+}
+
+
+
+/* **************************************
+* Build the reviews-view HTML
+* ************************************ */
+Util.buildReviewTable = async function (data) {
+    let grid
+    if (data.length > 0) {
+        grid = '<ul id="inv-display">'
+        data.forEach(review => {
+            grid += '<li id="rev-display">'
+            // grid += '<a href="../../inv/detail/' + vehicle.inv_id
+            //     + '" title="View ' + ' ' + vehicle.inv_make + ' ' + vehicle.inv_model
+            //     + ' details"><img src="' + vehicle.inv_thumbnail
+            //     + '" alt="Image of ' + vehicle.inv_make + ' ' + vehicle.inv_model
+            //     + ' on CSE Motors" /></a>'
+            // grid += '<div class="namePrice">'
+            // grid += '<hr />'
+            // grid += '<p>TEST</p>'
+            grid += '<h2>'
+            grid += '<a href="../../inv/detail/' + review.title + '" title="View '
+                + review.body + ' ' + review.account_id + ' details">'
+                + review.rev_date + ' ' + review.rev_id + '</a>'
+            grid += '</h2>'
+            // grid += '<span>$'
+            //     + new Intl.NumberFormat('en-US').format(review.inv_price) + '</span>'
+            grid += '</div>'
+            grid += '</li>'
+
+
+        })
+
+    } else {
+        grid += '<p class="notice">Sorry, no matching vehicles could be found.</p>'
+    }
+    return grid
+}
+
 
 /* **************************************
 * Build the classification view HTML
@@ -120,10 +199,20 @@ Util.buildClassificationList = async function (classification_id = null) {
 * Build the classification view HTML
 * ************************************ */
 Util.buildinv_id = async function (data) {
+    // const account_id = locals.accountData.account_id
+    // const { account_email, account_password, account_id } = req.body
+    // const { account_id } = res.locals.accountData
+    // const account_id = 15
+    // const inv_id = 14
+    // const d = new Date()
+    // let r_date = d.toISOString()
+    // const rev_date = r_date
+    // const inv_id = req.params.inv_id
     let grid
     if (data.length > 0) {
         grid = '<div class="col-container">'
         data.forEach(vehicle => {
+            const inv_id = vehicle.inv_id
             grid += '<div class="col">'
             grid += '<li class="rune">'
             grid += '<a href="../../inv/detail/' + vehicle.inv_id
@@ -155,66 +244,64 @@ Util.buildinv_id = async function (data) {
                 grid += '</div>'
             grid += '</li>'
             grid += '</div>'
-
             grid += '</div>'
+            // })
+            grid += '</div>'
+            grid += '</ul>'
+            grid += ' <h2> Customer Review</h2>'
+            grid += ''
+            grid += '<p>Be the first to write a review.<br>No reviews for this item. </p>'
+            // grid += messages()
+            grid += ' <span>'
+            grid += '<!-- <h2>HTML Forms</h2> -->'
+            grid += '<div id="hideform" type="hidden">'
+            grid += '<h2>Write Review</h2>'
+            grid += '   <form action="add_review" method="post">'
+            grid += '  <label for="title">Title:</label><br>'
+            grid += '<input type="text" id="rev_title" name="rev_title" value=""><br>'
+            grid += '  <label for="body">Review:</label><br>'
+            grid += ' <textarea   id="rev_body" name="rev_body" value="" rows="4" cols="50"></textarea><br><br>'
+            grid += ' <label for="test">Rating:</label><br>'
+            grid += ' <input type="text" id="rev_rating" name="rev_rating" value=""><br>'
+            // grid += +  rev_date + '"><br><br>'
+            // grid += '<label for="test">Account_id:</label><br>'
+            // grid += '<input type="integer" id="account_id" name="account_id" value="'
+            // grid += +  account_id + '"><br>'
+            // grid += ' <label for="test">inv id:</label><br>'
+            grid += ' <input type="hidden"  type="integer" id="inv_id" name="inv_id" value="'
+            grid += + inv_id
+            grid += '"><br><br>'
+
         })
-        grid += '</div>'
-        grid += '</ul>'
-        grid += ' < h2 > Customer Review</h2 >'
-        grid += ''
-
-        grid += '<p>Be the first to write a review.<br>No reviews for this item. </p>'
-
-
-        grid += '<%# - messages() %>'
+        // grid += '           <label for="date">Date:</label><br>'
+        // grid += ' <input type="date" id="rev_date" name="rev_date" value=a><br> '
+        grid += ' <button class="button">Contribute Review</button>'
+        grid += '  <!-- <input type="submit" value="Submit"> -->'
+        grid += '  </form>'
+        grid += '  <!-- <div>No Account? No Problem: <a href="/account/signup">Sign Up</a></div>'
 
 
-        grid += '       <span>'
-
-
-        grid += '         <!-- <h2>HTML Forms</h2> -->'
-        grid += '            <div id="hideform" type="hidden">'
-        grid += '               <h2>Write Review</h2>'
-        grid += '               <form action="add_review" method="post">'
-        grid += '                    <label for="title">Title:</label><br>'
-        grid += '                        <input type="text" id="rev_title" name="rev_title" value=""><br>'
-        grid += '                            <label for="body">Body:</label><br>'
-        grid += '                                <input type="text" id="rev_body" name="rev_body" value=""><br>'
-        grid += '                                    <!-- <label for="date">Date:</label><br>'
-        grid += '                                        <input type="date" id="rev_date" name="rev_date" value=a><br> -->'
-        grid += '                                           <label for="test">Rating:</label><br>'
-        grid += '                                               <input type="text" id="rev_rating" name="rev_rating" value=""><br><br>'
-        grid += '                                                    <label for="test">Account_id:</label><br>'
-        grid += '                                                        <input type="integer" id="account_id" name="account_id" value="<%= account_id %>"><br><br>'
-        grid += '                                                            <label for="test">inv id:</label><br>'
-        grid += '                                                              <input type="integer" id="inv_id" name="inv_id" value="<%= inv_id %>"><br><br>'
-        grid += '                                                                  <button class="button">Contribute Rating</button>'
-        grid += '                                                                   <!-- <input type="submit" value="Submit"> -->'
-        grid += '                                                                   </form>'
-        grid += '                                                                   <!-- <div>No Account? No Problem: <a href="/account/signup">Sign Up</a></div>'
-
-
-        grid += '                                                                   <%# account_id %>'
+        grid += '  <%# account_id %>'
         grid += '    -->'
-        grid += '                                                                </div>'
-        grid += '                                                                   <!-- <button class="button" id="showForm">Hide Rating Form</button> -->'
-        grid += '                                                                </span>'
-        grid += '                                                               </picture>'
-        grid += '                                                                <button onclick="myFunction()" id="rateBtn">Hide Rating Form</button>'
+        grid += '</div>'
+        grid += '  <!-- <button class="button" id="showForm">Hide Rating Form</button> -->'
+        grid += '</span>'
+        grid += ' </picture>'
+        grid += '<button onclick="myFunction()" id="rateBtn">Hide Rating Form</button>'
 
 
-        grid += '                                                               <script>'
-        grid += '                                                                   function myFunction() {'
+        grid += ' <script>'
+        grid += '  function myFunction() {'
         grid += '   var x = document.getElementById("hideform");'
-        grid += '                                                                   if (x.style.display === "none") {'
-        grid += '                                                                       x.style.display = "block";'
-        grid += '                                                                   rateBtn.innerHTML = "Hide Rating Form";'
+        grid += '  if (x.style.display === "none") {'
+        grid += '      x.style.display = "block";'
+        grid += '  rateBtn.innerHTML = "Hide Rating Form";'
         grid += '    } else {'
-        grid += '                                                                       x.style.display = "none";'
-        grid += '                                                                   rateBtn.innerHTML = "Write a Rating";'
+        grid += '      x.style.display = "none";'
+        grid += '  rateBtn.innerHTML = "Write a Rating";'
         grid += '    }'
         grid += '}'
-        grid += '                                                               </script>'
+        grid += ' </script>'
     } else {
         grid += '<p class="notice">Sorry, no matching vehicles could be found.</p>'
     }

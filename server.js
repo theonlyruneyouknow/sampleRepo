@@ -18,7 +18,9 @@ const app = express()
 const Util = require("./utilities/index")
 const static = require("./routes/static")
 const inventoryRoute = require("./routes/inventoryRoute")
+const reviewsRoute = require("./routes/reviewsRoute")
 const accountRoute = require("./routes/accountRoute")
+const { buildReviews } = require("./controllers/revController")
 // const accountRoute = require("./routes/accountRoute")
 // const cookieParsen = require("cookie-parsen")
 // const Util = require("./utilities/index")
@@ -97,6 +99,16 @@ async function buildManagement(req, res, next) {
   })
 }
 
+
+async function buildManagement(req, res, next) {
+  let nav = await utilities.getNav()
+  res.render("reviews/management", {
+    title: "Management",
+    nav,
+  })
+}
+
+
 async function buildClassification(req, res, next) {
   let nav = await utilities.getNav()
   res.render("inventory/add_classification", {
@@ -131,6 +143,7 @@ app.get("/", utilities.handleErrors(baseController.buildHome))
 app.use("/account", require("./routes/accountRoute"))
 app.use("/login", require("./routes/accountRoute"))
 app.use("/management", require("./routes/inventoryRoute"))
+app.use("/management", require("./routes/reviewsRoute"))
 // app.use("/management", require("./routes/accountRoute"))
 app.use("/signup", require("./routes/accountRoute"))
 app.use("/register", require("./routes/accountRoute"))
@@ -143,6 +156,7 @@ app.use("/register", require("./routes/accountRoute"))
 // Inventory routes
 app.use("/inv", inventoryRoute) //original but shows 404
 
+app.use("/rev", reviewsRoute) //original but shows 404
 // app.get("/inv", /inventory/management)
 // File Not Found Route - must be last route in list
 app.use(async (req, res, next) => {

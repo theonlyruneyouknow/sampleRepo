@@ -1,0 +1,54 @@
+<h1>Review Management</h1>
+<%#- messages() %>
+    <span>
+
+
+        <% if (title) { %>
+            <div id="inbox">
+                <h1>
+                    <%= title %>
+                </h1>
+                <%- messages() %>
+                    <%# if (errors) { %>
+                        <ul class="notice">
+                            <%# errors.array().forEach(error=> { %>
+                                <li>
+                                    <%#= error.msg %>
+                                </li>
+                                <%# }) %>
+                        </ul>
+                        <%# } %>
+
+                            <ul>
+                                <li><a href="./reviews/viewReviews/<%#= locals.accountData.account_id %>">View My
+                                        Reviews</a></li>
+                                <li><a href="./reviews/noReviewsVehicles">View Vehicles without Reviews</a></li>
+                                <li><a href="./reviews/viewAllReviewsList">View all reviews <span id="archived-count">
+                                            <%#= archivedCount %>
+                                        </span> Archived Messages</a></li>
+
+                                <table id="inventoryDisplay"></table>
+                                <script src="/js/revInventory.js"></script>
+                            </ul>
+
+                            <%#- messageInbox %>
+            </div>
+            <% } else { %>
+                <% res.redirect('/') %>
+                    <% } %>
+
+
+
+                        <!--                     
+
+        <h2>Manage Reviews</h2>
+        <p>Choose a classification to see those Inventory items.</p>
+        <%#- ReviewsList %>
+            <%#- classificationSelect %>
+                <table id="inventoryDisplay"></table>
+
+                <noscript>JavaScrip must be enabled to use this page.</noscript>
+                <script src="../../../sampleRepo/public/js/revInventory.js"></script>
+                < !-- <script src="/js/revInventory.js"></script> -- >
+    </span>
+    </picture> -->
