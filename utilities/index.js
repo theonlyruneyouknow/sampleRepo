@@ -209,10 +209,12 @@ Util.buildinv_id = async function (data) {
     // const rev_date = r_date
     // const inv_id = req.params.inv_id
     let grid
+
     if (data.length > 0) {
         grid = '<div class="col-container">'
         data.forEach(vehicle => {
             const inv_id = vehicle.inv_id
+
             grid += '<div class="col">'
             grid += '<li class="rune">'
             grid += '<a href="../../inv/detail/' + vehicle.inv_id
@@ -248,7 +250,7 @@ Util.buildinv_id = async function (data) {
             // })
             grid += '</div>'
             grid += '</ul>'
-            grid += ' <h2> Customer Review</h2>'
+            grid += ' <h2>Customer Review</h2>'
             grid += ''
             grid += '<p>Be the first to write a review.<br>No reviews for this item. </p>'
             // grid += messages()
