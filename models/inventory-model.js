@@ -70,9 +70,26 @@ async function registerVehicle(inv_make, inv_model, inv_year, inv_description, i
 // module.exports = { getClassifications }
 
 // /* ***************************
-//  *  Get all inventory items and classification_name by classification_id
+//  *  Get all inventory(1) items and classification_name by classification_id
 //  * ************************** */
 async function getInventoryByinv_id(inv_id) {
+    try {
+        const data = await pool.query(
+            `SELECT * FROM public.inventory 
+        WHERE inv_id = $1`,
+            [inv_id]
+        )
+        return data.rows
+    } catch (error) {
+        console.error("getinv_id error " + error)
+    }
+}
+
+
+// /* ***************************
+//  *  Get all inventory(2) items and classification_name by classification_id
+//  * ************************** */
+async function getInventory2Byinv_id(inv_id) {
     try {
         const data = await pool.query(
             `SELECT * FROM public.inventory 
@@ -142,4 +159,4 @@ async function deleteInventoryItem(inv_id) {
 }
 
 
-module.exports = { deleteInventoryItem, updateInventory, getClassifications, getInventoryByinv_id, getInventoryByClassificationId, registerClassification, registerVehicle };
+module.exports = { deleteInventoryItem, updateInventory, getClassifications, getInventoryByinv_id, getInventory2Byinv_id, getInventoryByClassificationId, registerClassification, registerVehicle };

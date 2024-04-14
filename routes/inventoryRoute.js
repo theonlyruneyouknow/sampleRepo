@@ -32,9 +32,14 @@ router.get("/add_inventory",
 
 router.get("/type/:classification_id",
     utilities.handleErrors(invController.buildByClassificationId));
+// find in invController code invCont.buildByClassificationId
 
 router.get("/inv",
-    utilities.handleErrors(invController.buildHome))
+    utilities.handleErrors(invController.buildManagement))
+
+router.get("/rev",
+    utilities.handleErrors(revController.buildManagement))
+
 
 
 
@@ -79,6 +84,12 @@ router.get("/getInventory/:classification_id",
 router.get("/edit/:inv_id",
     // "/edit/:inventory_id",
     utilities.handleErrors(invController.buildUpdateInventoryView));
+
+
+router.get("/edit2/:inv_id",
+    // "/edit/:inventory_id",
+    utilities.handleErrors(invController.buildUpdateInventoryView));
+
 
 
 // router.get("/inv/edit", utilities.handleErrors(invController.buildEdit))

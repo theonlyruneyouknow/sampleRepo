@@ -25,6 +25,7 @@ invCont.buildInventory = async function (req, res, next) {
 /* ***************************
  *  Build inventory by classification view
  * ************************** */
+
 invCont.buildByClassificationId = async function (req, res, next) {
     const classification_id = req.params.classification_id
     const data = await invModel.getInventoryByClassificationId(classification_id)
@@ -32,6 +33,7 @@ invCont.buildByClassificationId = async function (req, res, next) {
 
     let nav = await utilities.getNav()
     const className = data[0].classification_name
+    // res.render means show ejs file in view/inventory folder named classification
     res.render("inventory/classification", {
         title: className + " vehicles",
         nav,
@@ -316,6 +318,22 @@ invCont.buildInventory = async function (req, res, next) {
 };
 
 /*****************************************
+ * Build New Inventory View (edit2)
+ **************************************/
+invCont.buildEdit2 = async function (req, res, next) {
+    const nav = await utilities.getNav();
+    const { classification_id } = req.body;
+    const classificationList = await utilities.buildClassificationList(classification_id);
+    res.render("inventory/add_inventory", {
+        title: "Add New Inventory",
+        nav,
+        classificationList,
+        errors: null
+    });
+};
+
+
+/*****************************************
  * Build New Inventory View
  **************************************/
 invCont.buildEdit = async function (req, res, next) {
@@ -331,7 +349,36 @@ invCont.buildEdit = async function (req, res, next) {
 };
 
 /* ***************************
- *  Build edit inventory view
+ *  Build edit2 inventory view
+ * ************************** */
+invCont.edit2InventoryView = async function (req, res, next) {
+    const inv_id = parseInt(req.params.inv_id)
+    let nav = await utilities.getNav()
+    const itemData = await invModel.getInventoryByinv_id(inv_id)
+    const classificationSelect = await utilities.buildClassificationList(itemData.classification_id)
+    const itemName = `${itemData.inv_make} ${itemData.inv_model}`
+    // res.render("./inventory/edit2-inventory", {
+    res.render("./inventory/edit2", {
+        title: "Edit2 " + itemName,
+        nav,
+        classificationSelect,
+        errors: null,
+        inv_id: itemData.inv_id,
+        inv_make: itemData.inv_make,
+        inv_model: itemData.inv_model,
+        inv_year: itemData.inv_year,
+        inv_description: itemData.inv_description,
+        inv_image: itemData.inv_image,
+        inv_thumbnail: itemData.inv_thumbnail,
+        inv_price: itemData.inv_price,
+        inv_miles: itemData.inv_miles,
+        inv_color: itemData.inv_color,
+        classification_id: itemData.classification_id
+    })
+}
+
+/* ***************************
+ *  Build edit inventory view (1/ original)
  * ************************** */
 invCont.editInventoryView = async function (req, res, next) {
     const inv_id = parseInt(req.params.inv_id)
@@ -360,7 +407,7 @@ invCont.editInventoryView = async function (req, res, next) {
 }
 
 /* ***************************
- *  Build edit inventory view
+ *  Build delete inventory view
  * ************************** */
 invCont.buildDeleteInventoryView = async function (req, res, next) {
     const inv_id = parseInt(req.params.inv_id)
@@ -388,8 +435,38 @@ invCont.buildDeleteInventoryView = async function (req, res, next) {
     })
 }
 
+/* *************************** 
+ *  Build update2 inventory view (2)
+ * ************************** */
+invCont.buildUpdate2InventoryView = async function (req, res, next) {
+    const inv_id = parseInt(req.params.inv_id)
+    let nav = await utilities.getNav()
+    const itemData = await invModel.getInventoryByinv_id(inv_id)
+    const classificationSelect = await utilities.buildClassificationList(itemData.classification_id)
+    const itemName = `${itemData[0].inv_make} ${itemData[0].inv_model}`
+    // res.render("./inventory/edit2-inventory", {
+    res.render("./inventory/edit2", {
+        title: "Edit2 " + itemName,
+        nav,
+        classificationSelect: classificationSelect,
+        errors: null,
+        inv_id: itemData[0].inv_id,
+        inv_make: itemData[0].inv_make,
+        inv_model: itemData[0].inv_model,
+        inv_year: itemData[0].inv_year,
+        inv_description: itemData[0].inv_description,
+        inv_image: itemData[0].inv_image,
+        inv_thumbnail: itemData[0].inv_thumbnail,
+        inv_price: itemData[0].inv_price,
+        inv_miles: itemData[0].inv_miles,
+        inv_color: itemData[0].inv_color,
+        classification_id: itemData[0].classification_id
+    })
+}
+
+
 /* ***************************
- *  Build edit inventory view
+ *  Build update inventory view (1/original)Build update inventory view
  * ************************** */
 invCont.buildUpdateInventoryView = async function (req, res, next) {
     const inv_id = parseInt(req.params.inv_id)

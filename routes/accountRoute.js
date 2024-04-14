@@ -15,7 +15,7 @@ router.get("/login", utilities.handleErrors(accountController.buildLogin))
 router.get("/register", utilities.handleErrors(accountController.buildRegister))
 
 // router.get("/management", utilities.handleErrors(accountController.buildManagement))
-router.get("/inv", utilities.handleErrors(accountController.buildHome))
+// router.get("/inv", utilities.handleErrors(accountController.buildHome))
 
 router.get("/",
     utilities.checkLogin,

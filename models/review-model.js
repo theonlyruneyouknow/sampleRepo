@@ -30,6 +30,72 @@ async function getRevsByinv_id(inv_id) {
     }
 }
 
+/* ***************************
+ *  Get all inventory items and classification_name by classification_id
+ * ************************** */
+async function getInventoryByClassificationId(classification_id) {
+    try {
+        const data = await pool.query(
+            `SELECT * FROM public.inventory AS i 
+        JOIN public.classification AS c 
+        ON i.classification_id = c.classification_id 
+        WHERE i.classification_id = $1`,
+            [classification_id]
+        )
+        return data.rows
+    } catch (error) {
+        console.error("getclassificationsbyid error " + error)
+    }
+}
+
+
+/* ***************************
+ *  Get all inventory items and classification_name by classification_id
+ * ************************** */
+async function getInventoryByClassificationId(classification_id) {
+    try {
+        const data = await pool.query(
+            `SELECT * FROM public.inventory AS i 
+        JOIN public.classification AS c 
+        ON i.classification_id = c.classification_id 
+        WHERE i.classification_id = $1`,
+            [classification_id]
+        )
+        return data.rows
+    } catch (error) {
+        console.error("getclassificationsbyid error " + error)
+    }
+}
+
+
+
+/* ***************************
+ *  Get all inventory items and classification_name by classification_id
+ * ************************** */
+async function getReviewsByClassificationId(classification_id) {
+    try {
+        const data = await pool.query(
+            // `SELECT * FROM public.inventory AS i 
+            // JOIN public.review AS r 
+            // ON i.inv_id = r.inv_id  
+
+
+
+            ` SELECT * FROM public.inventory AS i 
+        JOIN public.review AS r 
+        ON i.inv_id = r.inv_id 
+	JOIN public.classification AS c 
+        ON i.classification_id = c.classification_id 
+WHERE i.inv_id = $1`,
+            [classification_id]
+        )
+        console.log(data.rows)
+        return data.rows
+    } catch (error) {
+        console.error("getReviewsByClassificationId error " + error)
+    }
+}
+
 
 /***********************
  * Get all Reviews for one car

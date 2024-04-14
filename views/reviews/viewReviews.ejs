@@ -20,15 +20,15 @@
                         <%# } %>
 
                             <ul>
-                                <li><a href="./reviews/viewReviews/<%#= locals.accountData.account_id %>">View My
+                                <li><a href="../viewReviews/<%#= locals.accountData.account_id %>">View My
                                         Reviews</a></li>
-                                <li><a href="./reviews/noReviewsVehicles">View Vehicles without Reviews</a></li>
-                                <li><a href="./reviews/viewAllReviewsList">View all reviews <span id="archived-count">
+                                <li><a href="../noReviewsVehicles">View Vehicles without Reviews</a></li>
+                                <li><a href="../viewAllReviewsList">View all reviews <span id="archived-count">
                                             <%#= archivedCount %>
                                         </span> Archived Messages</a></li>
 
                                 <table id="inventoryDisplay"></table>
-                                <script src="/js/revInventory.js"></script>
+                                <!-- <script src="/js/revInventory.js"></script> -->
                             </ul>
 
                             <%#- messageInbox %>

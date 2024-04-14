@@ -1,0 +1,25 @@
+<h1>Please log in</h1>
+<%#- messages() %>
+    <span>
+        <!-- <h2>HTML Forms</h2> -->
+        <!-- <form action="/action_page.php">
+            < !-- <label for="name">Email address:</label><br>
+            <input type="text" id="account_email" name="account_email" value=""><br>
+            <label for="email">Password:</label><br>
+            <input type="text" id="account_password" name="account_password" value=""><br><br>
+            <button class="button">Log In</button> -- >
+            < !-- <input type="submit" value="Submit"> -- >
+        </form> -->
+        <!-- <div><a href="/rev/add_classification">Add New Classification</a>
+            <a href="/rev/add_inventory">Add New Vehicle</a>
+        </div> -->
+        <h2>Manage Reviews</h2>
+        <p>Choose a classification to see those Inventory items.</p>
+        <!-- <%#- classificationList %> -->
+        <%- classificationShortList %>
+            <table id="inventoryDisplay"></table>
+
+            <noscript>JavaScrip must be enabled to use this page.</noscript>
+
+            <script src="../../js/inventory2.js"></script>
+    </span>

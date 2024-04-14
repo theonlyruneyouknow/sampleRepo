@@ -20,8 +20,9 @@ router.get("/",
 router.get("/viewReviews", utilities.handleErrors(revController.viewReviews));
 router.get("/noReviewsVehicles", utilities.handleErrors(revController.noReviewsVehicles));
 router.get("/viewAllReviewsList", utilities.handleErrors(revController.viewAllReviewsList));
-// router.get("/viewAllReviewsList", utilities.handleErrors(revController.viewAllReviewsList));
+router.get("/revManagement", utilities.handleErrors(revController.buildManagement));
 router.get("/buildReviewbox", utilities.handleErrors(revController.buildReviewbox));
+router.get("/buildViewReview", utilities.handleErrors(revController.buildViewReviews));
 router.get("/buildReview", utilities.handleErrors(revController.buildReviews));
 // router.get("/viewReviews", utilities.handleErrors(revController.viewReviews));
 

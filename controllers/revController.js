@@ -1,19 +1,56 @@
 const utilities = require("../utilities")
 const reviewModel = require("../models/review-model")
-
 const revController = require("../controllers/revController")
 const bcrypt = require("bcryptjs")
 const jwt = require("jsonwebtoken")
 require("dotenv").config()
 const revCont = {}
-
-
 const { route } = require("../routes/static");
 // const utilities = require("../utilities");
 // const messageModel = require("../models/message-model");
 require("dotenv").config();
 
 
+revCont.getInventoryJSON = async (req, res, next) => {
+    const classification_id = parseInt(req.params.classification_id)
+    const checkInvData = await revModel.getInventoryByClassificationId(classification_id)
+    if (checkInvData[0].inv_id) {
+        return res.json(checkInvData)
+    } else {
+        next(new Error("No data Returned"))
+    }
+}
+
+
+/* ***************************
+ *  Build inventory by classification view
+ * ************************** */
+revCont.buildManagement = async function (req, res, next) {
+    const inv_id = req.params.inv_id
+    const data = await invModel.getInventoryByinv_id(inv_id)
+    const grid = await utilities.buildinv_id(data)
+    let nav = await utilities.getNav()
+    // const inv_year = data[0].inv_year
+    // const inv_make = data[0].inv_make
+    // const inv_model = data[0].inv_model
+    // const inv_description = data[0].inv_description
+    // const inv_miles = data[0].inv_miles
+    // const inv_color = data[0].inv_color
+    // const inv_price = data[0].inv_price
+
+    res.render("reviews/management", {
+        title: "Management",
+        // inv_make,
+        // inv_model,
+        // inv_year,
+        // inv_description,
+        // inv_price,
+        // inv_miles,
+        // inv_color,
+        nav,
+        grid,
+    })
+}
 
 
 /* ****************************************
@@ -104,7 +141,7 @@ revCont.buildReviews = async function (req, res, next) {
     // const inv_color = data[0].inv_color
     // const inv_price = data[0].inv_price
 
-    res.render("reviews/management", {
+    res.render("reviews/revManagement", {
         title: "Reviews",
         // inv_make,
         // inv_model,
@@ -167,7 +204,7 @@ revCont.viewAllReviewsList = async function (req, res, next) {
 /*************************************
  * Build Management View
  ***************************************/
-revCont.noReviewsVehicles = async function (req, res, next) {
+revCont.buildnoReviewsVehicles = async function (req, res, next) {
     const nav = await utilities.getNav();
     // const classificationList = await utilities.buildClassificationList();
     res.render("/reviews/noReviewsVehicles", {
@@ -178,11 +215,56 @@ revCont.noReviewsVehicles = async function (req, res, next) {
     });
 };
 
+/*************************************
+ * Build Management View
+ ***************************************/
+revCont.noReviewsVehicles = async function (req, res, next) {
+    const nav = await utilities.getNav();
+    // const classificationList = await utilities.buildClassificationList();
+    res.render("reviews/noReviewsVehicles", {
+        title: "No Reviews Vehicles",
+        nav,
+        // classificationList,
+        errors: null,
+    });
+};
+
+
 
 /*************************************
  * Build Management View
  ***************************************/
-revCont.noReviewsVviewAllReviewsListehicles = async function (req, res, next) {
+revCont.buildManagement2 = async function (req, res, next) {
+    const nav = await utilities.getNav();
+    // const classificationList = await utilities.buildClassificationList();
+    res.render("/reviews/revManagement", {
+        title: "revManagement",
+        nav,
+        // classificationList,
+        errors: null,
+    });
+};
+
+/*************************************
+ * Build Management View
+ ***************************************/
+revCont.buildViewReviews = async function (req, res, next) {
+    const nav = await utilities.getNav();
+    const classificationList = await utilities.buildRevClassificationList();
+    res.render("/rev/viewReviews", {
+        title: "ViewReviews",
+        nav,
+        classificationList,
+        errors: null,
+    });
+};
+
+
+
+/*************************************
+ * Build Management View
+ ***************************************/
+revCont.viewAllReviewsList2 = async function (req, res, next) {
     const nav = await utilities.getNav();
     // const classificationList = await utilities.buildClassificationList();
     res.render("/reviews/viewAllReviewsList", {
@@ -212,10 +294,10 @@ revCont.buildManagementList = async function (req, res, next) {
  *  Build inventory by classification view
  * ************************** */
 revCont.buildManagement = async function (req, res, next) {
-    const inv_id = req.params.inv_id
-    const data = await invModel.getInventoryByinv_id(inv_id)
-    const grid = await utilities.buildinv_id(data)
-    let nav = await utilities.getNav()
+    // const inv_id = req.params.inv_id
+    // const data = await invModel.getInventoryByinv_id(inv_id)
+    // const grid = await utilities.buildinv_id(data)
+    // let nav = await utilities.getNav()
     // const inv_year = data[0].inv_year
     // const inv_make = data[0].inv_make
     // const inv_model = data[0].inv_model
@@ -224,7 +306,7 @@ revCont.buildManagement = async function (req, res, next) {
     // const inv_color = data[0].inv_color
     // const inv_price = data[0].inv_price
 
-    res.render("reviews/management", {
+    res.render("reviews/buildManagement", {
         title: "Management",
         // inv_make,
         // inv_model,
@@ -234,7 +316,7 @@ revCont.buildManagement = async function (req, res, next) {
         // inv_miles,
         // inv_color,
         nav,
-        grid,
+        // grid,
     })
 }
 
@@ -245,7 +327,7 @@ revCont.buildManagementView = async function (req, res, next) {
     let nav = await utilities.getNav()
     const classificationList = await utilities.buildClassificationList()
 
-    res.render("./reviews/management", {
+    res.render("reviews/revManagement", {
         title: "Reviews Management",
         nav,
         classificationList,
