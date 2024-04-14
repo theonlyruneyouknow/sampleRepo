@@ -11,6 +11,10 @@ const invController = require("../controllers/invController")
 // const invChecks = require("../utilities/inventory-valuation")
 // Route to build inventory by classification view
 
+router.get("/edit/:inv_id",
+    // "/edit/:inventory_id",
+    utilities.handleErrors(revController.buildUpdateReviewView));
+
 
 // router.get("/", revController.viewReviews);
 // router.use("/", utilities.checkLogin);

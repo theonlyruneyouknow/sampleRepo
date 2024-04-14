@@ -78,9 +78,6 @@ async function getReviewsByClassificationId(classification_id) {
             // `SELECT * FROM public.inventory AS i 
             // JOIN public.review AS r 
             // ON i.inv_id = r.inv_id  
-
-
-
             ` SELECT * FROM public.inventory AS i 
         JOIN public.review AS r 
         ON i.inv_id = r.inv_id 

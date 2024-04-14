@@ -22,6 +22,10 @@ classificationShortList.addEventListener("change", function () {
             buildInventoryList(data);
         })
         .catch(function (error) {
+            // document.getElementById.inventoryDisplay.innerHTML = "Classification is empty"
+            document.getElementById("inventoryDisplay").innerHTML = "NO ITEMS HERE";
+
+            // throw Error("Classification is empty");
             console.log('There was a problem: ', error.message)
         })
 })
