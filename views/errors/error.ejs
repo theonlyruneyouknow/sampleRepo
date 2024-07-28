@@ -1,20 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
-<%- include('../partials/head') %>
+<% if (title) { %>
+    <h1>
+        <%= title %>
+    </h1>
+    <% } else { res.redirect('/') } %><%- message %>
 
-    <body>
-        <div id="wrapper" class="test">
-            <%#- include('../partials/header') %>
-                <%#- include('../partials/navigation') %>
 
-                    <main>
-                        <h1>"There's nothing to see here, just a crash! Please look at the road ahead, so you don't slow
-                            down everyone else that is trying to get where they are going."</h1>
-                        <%#- body %>
-                    </main>
+            <!-- <!DOCTYPE html>
+<html lang="en"> -->
+            <%#- include('../partials/head') %>
 
-                    <%#- include('../partials/footer') %>
-        </div>
-    </body>
+                <body>
+                    <!-- <div id="wrapper" class="test"> -->
+                    <%#- include('../partials/header') %>
+                        <%#- include('../partials/navigation') %>
 
-</html>
+                            <main>
+                                <!-- <h1>"There's nothing to see here, just a crash! Please look at the road ahead, so you don't slow
+                            down everyone else that is trying to get where they are going."</h1> -->
+                                <%#- body %>
+                            </main>
+
+                            <%#- include('../partials/footer') %>
+                                </div>
+                </body>
+
+                </html>

@@ -25,7 +25,7 @@ Util.getNav = async function (req, res, next) {
     return list
 }
 
-module.exports = Util
+
 
 
 /* **************************************
@@ -105,3 +105,7 @@ Util.buildVehicleGrid = async function (data) {
     }
     return grid
 }
+
+
+
+module.exports = Util

@@ -34,6 +34,17 @@ hero {
 
 }
 
+#pswdBtn {
+  border: 2px solid #000;
+  border-radius: 5px;
+  padding: 2px;
+  margin-top: 1em;
+  font-size: small;
+  width: 7em;
+  text-align: center;
+}
+
+
 .center {
   display: block;
   margin-left: auto;
@@ -67,20 +78,45 @@ h2 {
   /* letter-spacing: 3px; */
 }
 
+.management a:link,
 .tools a:link {
   text-transform: uppercase;
   text-decoration: none;
   color: #215714;
   text-align: right;
+}
 
+.tools a:link {
   position: absolute;
   /* margin: 5%; */
   /* text-indent: -50px; */
-  top: 68px;
-  right: 100px;
+  top: 80px;
+  right: 150px;
   font-size: 18px;
 
 }
+
+.management a:link {
+  position: absolute;
+  /* margin: 5%; */
+  /* text-indent: -50px; */
+  top: 58px;
+  right: 250px;
+  font-size: 18px;
+
+}
+
+.in_out a:link {
+  position: absolute;
+  /* margin: 5%; */
+  /* text-indent: -50px; */
+  top: 58px;
+  right: 150px;
+  font-size: 18px;
+
+}
+
+
 
 #tools {
   color: green;
@@ -137,8 +173,33 @@ button {
   opacity: 75%;
 }
 
-#inv-display {
+.col-container {
   list-style-type: none;
+
+  display: table;
+  width: 100%;
+}
+
+.col {
+  display: table-cell;
+  padding: 16px;
+}
+
+/* 
+input:required:invalid,
+input:focus:invalid { */
+/* insert your own styles for invalid form input */
+/* } */
+
+#inv-display {
+
+  list-style-type: none;
+  -moz-column-count: 3;
+  -moz-column-gap: 20px;
+  -webkit-column-count: 3;
+  -webkit-column-gap: 20px;
+  column-count: 3;
+  column-gap: 20px;
 }
 
 /* .block {
